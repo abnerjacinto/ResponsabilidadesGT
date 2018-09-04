@@ -148,6 +148,9 @@
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Xam.Plugins.Forms.ImageCircle">
+      <Version>3.0.0.5</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="3.1.0.697729" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
@@ -156,5 +159,17 @@
       <Project>{570358AF-783C-4EC5-A26E-C0DE3931DC59}</Project>
       <Name>ResponsabilidadesGT</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\iconEmail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\iconPassword.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\iconUsername.png" />
   </ItemGroup>
 </Project>
