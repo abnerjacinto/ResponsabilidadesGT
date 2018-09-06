@@ -2,62 +2,106 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ResponsabilidadesGT.Views.LoginPage"
-             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin">
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="Login">
     <ContentPage.Content>
-        <StackLayout Padding="10,20,5,10">
+        <ScrollView>
+            <StackLayout Padding="5">
+                <Image 
+                    Aspect="AspectFit"
+                    Source="logo"
+                    WidthRequest="250"/>
+                <Grid Margin="10,0">
 
-            <Image 
-                Aspect="AspectFit"
-                Source="logo"
-                WidthRequest="250"/>
-            <Grid Padding="20, 30, 20, 20" RowSpacing="20"
-                  BackgroundColor="DimGray">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="2*"/>
-                </Grid.ColumnDefinitions>
-                <Image Grid.Row="0"
-                    Grid.Column="0"
-                    Source="iconUsername"
-                    HeightRequest="30" 
-                    VerticalOptions="Center"
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="4*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image 
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Source="iconUsername"
+                        HeightRequest="30" 
+                        VerticalOptions="Center"
                     />
-                <Entry
-                    Grid.Row="0"
-                    Grid.Column="1"
-                    Keyboard="Text"
-                    Placeholder="Ingrese Nombre">
-                </Entry>
+                    <Entry
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Keyboard="Text"
+                        Placeholder="Ingrese Nombre">
+                    </Entry>
+                    <Image 
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Source="iconEmail"
+                        HeightRequest="30" 
+                        VerticalOptions="Center"
+                    />
+                    <Entry
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Keyboard="Email"
+                        Placeholder="Ingrese Correo">
+                    </Entry>
+                    <Image 
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Source="iconPassword"
+                        HeightRequest="30" 
+                        VerticalOptions="Center"
+                    />
+                    <Entry
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        IsPassword="True"
+                        Placeholder="Ingrese Contraseña">
+                    </Entry>
+                </Grid>
+                <ActivityIndicator>
+                </ActivityIndicator>
+                <StackLayout 
+                    Margin="10,0"
+                    Orientation="Horizontal">
+                    <Label
+                        HorizontalOptions="StartAndExpand"
+                        Text="Recordad Contraseña"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Switch
+                        HorizontalOptions="End">
+                    </Switch>
+                </StackLayout>
+                
                 <Label
-                    Grid.Row="1"
-                    Grid.Column="0"
-                    Text="Ingrese Correo:">
+                    Text="¿Has olvidado tu contraseña?"
+                    TextColor="SkyBlue"
+                    HorizontalOptions="Center">
+
                 </Label>
-                <Entry
-                    Grid.Row="1"
-                    Grid.Column="1"
-                    Keyboard="Email"
-                    Placeholder="Ingrese Correo">
-                </Entry>
-                <Label
-                    Grid.Row="2"
-                    Grid.Column="0"
-                    Text="Contraseña:">
-                </Label>
-                <Entry
-                    Grid.Row="2"
-                    Grid.Column="1"
-                    IsPassword="True"
-                    Placeholder="Ingrese Contraseña">
-                </Entry>
-            </Grid>
-            <ActivityIndicator></ActivityIndicator>
-            <Button 
-                Text="Ingresar"
-                BackgroundColor="LightBlue"
-                TextColor="WhiteSmoke"
-                BorderRadius="23">
-            </Button>
-        </StackLayout>
+                <StackLayout
+                    Margin="30,0"
+                    Orientation="Horizontal">
+                    <Button 
+                        Text="Ingresar"
+                        BackgroundColor="SkyBlue"
+                        HeightRequest="46"    
+                        TextColor="White"
+                        BorderRadius="23"
+                        HorizontalOptions="FillAndExpand">
+                    </Button>
+                    <Button 
+                        Text="Registrarse"
+                        HeightRequest="46"
+                        BackgroundColor="MediumPurple"
+                        TextColor="White"
+                        BorderRadius="23"
+                        HorizontalOptions="FillAndExpand">
+                    </Button>
+                </StackLayout>
+
+            </StackLayout>
+        </ScrollView>
+            
     </ContentPage.Content>
 </ContentPage>
