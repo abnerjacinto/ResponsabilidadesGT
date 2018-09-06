@@ -172,4 +172,13 @@
   <ItemGroup>
     <BundleResource Include="Resources\iconUsername.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\iconFacebook.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\iconInstagram.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\iconTwitter.png" />
+  </ItemGroup>
 </Project>

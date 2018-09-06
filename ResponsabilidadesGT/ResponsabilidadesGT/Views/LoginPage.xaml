@@ -21,38 +21,25 @@
                     <Image 
                         Grid.Row="0"
                         Grid.Column="0"
-                        Source="iconUsername"
+                        Source="iconEmail"
                         HeightRequest="30" 
                         VerticalOptions="Center"
                     />
                     <Entry
                         Grid.Row="0"
                         Grid.Column="1"
-                        Keyboard="Text"
-                        Placeholder="Ingrese Nombre">
-                    </Entry>
-                    <Image 
-                        Grid.Row="1"
-                        Grid.Column="0"
-                        Source="iconEmail"
-                        HeightRequest="30" 
-                        VerticalOptions="Center"
-                    />
-                    <Entry
-                        Grid.Row="1"
-                        Grid.Column="1"
                         Keyboard="Email"
                         Placeholder="Ingrese Correo">
                     </Entry>
                     <Image 
-                        Grid.Row="2"
+                        Grid.Row="1"
                         Grid.Column="0"
                         Source="iconPassword"
                         HeightRequest="30" 
                         VerticalOptions="Center"
                     />
                     <Entry
-                        Grid.Row="2"
+                        Grid.Row="1"
                         Grid.Column="1"
                         IsPassword="True"
                         Placeholder="Ingrese Contraseña">
@@ -98,6 +85,21 @@
                         BorderRadius="23"
                         HorizontalOptions="FillAndExpand">
                     </Button>
+                </StackLayout>
+                <StackLayout
+                    Orientation="Horizontal"
+                    HorizontalOptions="Center">
+                    <Image 
+                        HeightRequest="100"
+                        Source="iconFacebook"/>
+                    <Image 
+                        HeightRequest="100"
+                        Source="iconTwitter"/>
+                    <Image 
+                        HeightRequest="100"
+                        Source="iconInstagram"/>
+                    
+                    
                 </StackLayout>
 
             </StackLayout>
