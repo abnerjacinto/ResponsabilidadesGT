@@ -1,11 +1,10 @@
-﻿using ResponsabilidadesGT.Views;
-using System;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-
-[assembly: XamlCompilation(XamlCompilationOptions.Compile)]
-namespace ResponsabilidadesGT
+﻿namespace ResponsabilidadesGT
 {
+    using ResponsabilidadesGT.Views;
+    using Xamarin.Forms;
+    using Xamarin.Forms.Xaml;
+
+
     public partial class App : Application
     {
         public App()

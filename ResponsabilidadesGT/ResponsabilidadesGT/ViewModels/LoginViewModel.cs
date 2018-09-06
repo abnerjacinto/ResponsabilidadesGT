@@ -1,93 +1,39 @@
-﻿using GalaSoft.MvvmLight.Command;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Text;
-using System.Windows.Input;
-using Xamarin.Forms;
-
-namespace ResponsabilidadesGT.ViewModels
+﻿namespace ResponsabilidadesGT.ViewModels
 {
-    class LoginViewModel:INotifyPropertyChanged
+    using GalaSoft.MvvmLight.Command;
+    using System.Windows.Input;
+    using Xamarin.Forms;
+    using Views;
+    public class LoginViewModel:BaseViewModel
     {
-        #region Events
-        public event PropertyChangedEventHandler PropertyChanged;
-        #endregion
+
         #region attributes
-        private string email { get; set; }
-        private string password { get; set; }
-        private bool isEnabled { get; set; }
-        private bool isRunning { get; set; }
+            private string email;
+            private string password;
+            private bool isEnabled; 
+            private bool isRunning;
         #endregion
         #region Propierties
         public string Email
         {
-            get
-            {
-                return this.email;
-            }
-            set
-            {
-                if(this.email!=value)
-                {
-                    this.email = value;
-                    PropertyChanged?.Invoke(
-                        this,
-                        new PropertyChangedEventArgs(nameof(this.Email)));
-                }
-            }
+            get { return email; }
+            set { SetValue(ref email, value); }
         }
         public string Password
         {
-            get
-            {
-                return this.password;
-            }
-            set
-            {
-                if (this.password != value)
-                {
-                    this.password = value;
-                    PropertyChanged?.Invoke(
-                        this,
-                        new PropertyChangedEventArgs(nameof(this.Password)));
-                }
-            }
+            get { return password; }
+            set { SetValue(ref password, value); }
         }
         public bool IsRunning
         {
-            get
-            {
-                return this.isRunning;
-            }
-            set
-            {
-                if (this.isRunning != value)
-                {
-                    this.isRunning = value;
-                    PropertyChanged?.Invoke(
-                        this,
-                        new PropertyChangedEventArgs(nameof(this.IsRunning)));
-                }
-            }
+            get { return isRunning; }
+            set { SetValue(ref isRunning, value); }
         }
         public bool IsRemember { get; set; }
         public bool IsEnabled
         {
-            get
-            {
-                return this.isEnabled;
-            }
-            set
-            {
-                if (this.isEnabled != value)
-                {
-                    this.isEnabled = value;
-                    PropertyChanged?.Invoke(
-                        this,
-                        new PropertyChangedEventArgs(nameof(this.IsEnabled)));
-                }
-            }
+            get { return isEnabled; }
+            set { SetValue(ref isEnabled, value); }
         }
         #endregion
         #region Constructors
@@ -126,6 +72,21 @@ namespace ResponsabilidadesGT.ViewModels
                     "Ok");
                 return;
             }
+            if (this.Email!="abner.jacinto@gmail.com" || this.Password!="1234")
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    "Error",
+                    "Correo o contraseña no son válidos",
+                    "Ok");
+                return;
+            }
+            this.IsEnabled = true;
+            this.IsRunning = false;
+
+            this.Email = string.Empty;
+            this.Password = string.Empty;
+            MainViewModel.GetInstance().Responsabilidades = new ResponsabilidadesViewModel();
+            await Application.Current.MainPage.Navigation.PushAsync(new ResponsabilidadesPage());
         }
         #endregion
     }

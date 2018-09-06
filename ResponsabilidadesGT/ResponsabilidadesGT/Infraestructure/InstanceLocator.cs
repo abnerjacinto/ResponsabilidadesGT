@@ -1,10 +1,6 @@
-﻿using ResponsabilidadesGT.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ResponsabilidadesGT.Infraestructure
+﻿namespace ResponsabilidadesGT.Infraestructure
 {
+    using ResponsabilidadesGT.ViewModels;
     class InstanceLocator
     {
         #region propierties
