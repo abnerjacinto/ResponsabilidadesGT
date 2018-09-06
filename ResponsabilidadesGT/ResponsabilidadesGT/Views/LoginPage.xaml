@@ -6,7 +6,8 @@
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              Title="Login">
     <ContentPage.Content>
-        <ScrollView>
+        <ScrollView
+            BindingContext="{Binding Login}">
             <StackLayout Padding="5">
                 <Image 
                     Aspect="AspectFit"
@@ -29,7 +30,8 @@
                         Grid.Row="0"
                         Grid.Column="1"
                         Keyboard="Email"
-                        Placeholder="Ingrese Correo">
+                        Placeholder="Ingrese Correo"
+                        Text="{Binding Email,Mode=TwoWay}">
                     </Entry>
                     <Image 
                         Grid.Row="1"
@@ -42,10 +44,12 @@
                         Grid.Row="1"
                         Grid.Column="1"
                         IsPassword="True"
-                        Placeholder="Ingrese Contraseña">
+                        Placeholder="Ingrese Contraseña"
+                        Text="{Binding Password,Mode=TwoWay}">
                     </Entry>
                 </Grid>
-                <ActivityIndicator>
+                <ActivityIndicator
+                    IsRunning="{Binding IsRunning,Mode=TwoWay}">
                 </ActivityIndicator>
                 <StackLayout 
                     Margin="10,0"
@@ -56,6 +60,7 @@
                         VerticalOptions="Center">
                     </Label>
                     <Switch
+                        IsToggled="{Binding IsRemember,Mode=TwoWay}"
                         HorizontalOptions="End">
                     </Switch>
                 </StackLayout>
@@ -75,7 +80,9 @@
                         HeightRequest="46"    
                         TextColor="White"
                         BorderRadius="23"
-                        HorizontalOptions="FillAndExpand">
+                        HorizontalOptions="FillAndExpand"
+                        Command="{Binding LoginCommand}"
+                        IsEnabled="{Binding IsEnabled,Mode=TwoWay}">
                     </Button>
                     <Button 
                         Text="Registrarse"
@@ -83,7 +90,8 @@
                         BackgroundColor="MediumPurple"
                         TextColor="White"
                         BorderRadius="23"
-                        HorizontalOptions="FillAndExpand">
+                        HorizontalOptions="FillAndExpand"
+                        IsEnabled="{Binding IsEnabled,Mode=TwoWay}">>
                     </Button>
                 </StackLayout>
                 <StackLayout
