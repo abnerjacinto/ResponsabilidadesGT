@@ -91,6 +91,7 @@
                         TextColor="White"
                         BorderRadius="23"
                         HorizontalOptions="FillAndExpand"
+                        Command="{Binding RegisterCommand}"
                         IsEnabled="{Binding IsEnabled,Mode=TwoWay}">>
                     </Button>
                 </StackLayout>

@@ -52,8 +52,6 @@
             }
         }
 
-        
-
         private async void Login()
         {
             if (string.IsNullOrEmpty(this.Email))
@@ -61,7 +59,7 @@
                 await Application.Current.MainPage.DisplayAlert(
                     "Error",
                     "Debe de ingresar un correo",
-                    "Ok");
+                    "Aceptar");
                 return;
             }
             if (string.IsNullOrEmpty(this.Password))
@@ -69,7 +67,7 @@
                 await Application.Current.MainPage.DisplayAlert(
                     "Error",
                     "Debe de ingresar una contraseña",
-                    "Ok");
+                    "Aceptar");
                 return;
             }
             if (this.Email!="abner.jacinto@gmail.com" || this.Password!="1234")
@@ -77,7 +75,7 @@
                 await Application.Current.MainPage.DisplayAlert(
                     "Error",
                     "Correo o contraseña no son válidos",
-                    "Ok");
+                    "Aceptar");
                 return;
             }
             this.IsEnabled = true;
@@ -88,6 +86,19 @@
             MainViewModel.GetInstance().Responsabilidades = new ResponsabilidadesViewModel();
             await Application.Current.MainPage.Navigation.PushAsync(new ResponsabilidadesPage());
         }
-        #endregion
-    }
+        public ICommand RegisterCommand
+        {
+            get
+            {
+                return new RelayCommand(Register);
+            }
+        }
+        private async void Register()
+        {
+            MainViewModel.GetInstance().Register = new RegisterViewModel();
+            await Application.Current.MainPage.Navigation.PushAsync(new RegisterPage());
+        }
+
+            #endregion
+        }
 }

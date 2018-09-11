@@ -5,6 +5,7 @@
         #region ViewModel
         public LoginViewModel Login { get; set; }
         public ResponsabilidadesViewModel Responsabilidades { get; set; }
+        public RegisterViewModel Register { get; set; }
         #endregion
         #region Constructor
         public MainViewModel()
