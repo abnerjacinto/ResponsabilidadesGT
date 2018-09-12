@@ -163,6 +163,7 @@ namespace ResponsabilidadesGT.ViewModels
                 this.REmail = string.Empty;
                 return;
             }
+
         }
         #endregion
     }
