@@ -1,7 +1,7 @@
 ﻿namespace ResponsabilidadesGT.Models
 {
     using Newtonsoft.Json;
-    class Glosario
+    public class Glosario
     {
         [JsonProperty(PropertyName = "id_glosario")]
         public int IdGlosario { get; set; }

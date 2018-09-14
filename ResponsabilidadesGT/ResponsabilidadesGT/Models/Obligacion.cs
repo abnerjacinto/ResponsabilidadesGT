@@ -1,7 +1,7 @@
 ﻿namespace ResponsabilidadesGT.Models
 {
     using Newtonsoft.Json;
-    class Obligacion
+    public class Obligacion
     {
         #region Properties
         [JsonProperty(PropertyName = "id_obligacion")]

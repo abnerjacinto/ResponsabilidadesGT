@@ -7,9 +7,10 @@
     <ContentPage.Content>
         <StackLayout
             BindingContext="{Binding Responsabilidades}">
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <ListView
+                ItemsSource="{Binding Obligaciones}">
+                
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

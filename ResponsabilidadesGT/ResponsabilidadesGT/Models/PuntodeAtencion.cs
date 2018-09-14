@@ -1,7 +1,7 @@
 ﻿namespace ResponsabilidadesGT.Models
 {
     using Newtonsoft.Json;
-    class PuntodeAtencion
+    public class PuntodeAtencion
     {
         [JsonProperty(PropertyName = "id_punto_de_atencion")]
         public int IdPuntodeAtencion { get; set; }
