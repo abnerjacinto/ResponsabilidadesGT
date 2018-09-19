@@ -6,17 +6,15 @@
              Title="Responsabilidades">
     <ContentPage.Content>
         <StackLayout
-            BindingContext="{Binding Responsabilidades}"
-            Padding="5">
+            BindingContext="{Binding Responsabilidades}">
             <SearchBar
-                BackgroundColor="SkyBlue"
                 HeightRequest="46"
                 Text="{Binding Filter, Mode=TwoWay}"
                 Placeholder="Buscar..."
                 SearchCommand="{Binding SearchCommand}">
             </SearchBar>
             <ListView 
-                BackgroundColor="Silver"
+                
                 HasUnevenRows="true" 
                 IsPullToRefreshEnabled="true"
                 IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
@@ -27,12 +25,12 @@
                     <DataTemplate>
                         <ViewCell>
                             <Frame
-                                BackgroundColor="SkyBlue"
+                                BackgroundColor="AliceBlue"
                                 CornerRadius="20"
                                 HasShadow="true"
                                 Margin="5">
                                 <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding SelectLandCommand}"/>
+                                    <TapGestureRecognizer Command="{Binding SelectObligacionCommand}"/>
                                 </Frame.GestureRecognizers>
                                 <Grid>
                                     <Grid.ColumnDefinitions>
@@ -45,12 +43,12 @@
                                         Grid.Column="1"
                                         VerticalOptions="Center">
                                         <Label 
-                                            FontAttributes="Bold"
-                                            FontSize="Medium" 
                                             Text="{Binding IdObligacion}"
                                             TextColor="Black">
                                         </Label>
-                                        <Label 
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="Medium"
                                             Text="{Binding NombreObligacion}"
                                             TextColor="Black">
                                         </Label>

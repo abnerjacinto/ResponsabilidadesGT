@@ -1,11 +1,30 @@
-﻿namespace ResponsabilidadesGT.ViewModels
+﻿
+
+namespace ResponsabilidadesGT.ViewModels
 {
+    using System.Collections.Generic;
+    using Models;
     class MainViewModel
     {
+        #region Properties
+        public List<Obligacion> ObligacionesList
+        {
+            get;
+            set;
+        }
+
+        public TokenResponse Token
+        {
+            get;
+            set;
+        }
+        #endregion
         #region ViewModel
         public LoginViewModel Login { get; set; }
         public ResponsabilidadesViewModel Responsabilidades { get; set; }
         public RegisterViewModel Register { get; set; }
+        public GlosarioViewModel Glosario { get; set; }
+        
         #endregion
         #region Constructor
         public MainViewModel()

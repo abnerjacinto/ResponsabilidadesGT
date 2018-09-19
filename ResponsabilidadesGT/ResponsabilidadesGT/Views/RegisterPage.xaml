@@ -21,14 +21,14 @@
                     <Label 
                         Grid.Row="0"
                         Grid.Column="0"
-                        Text="Nombre:" 
+                        Text="Nombre de Usuario:" 
                         VerticalOptions="Center"
                     />
                     <Entry
                         Grid.Row="0"
                         Grid.Column="1"
                         Keyboard="Text"
-                        Placeholder="Ingrese Nombre y Apellido"
+                        Placeholder="Ingrese nombre de usuario"
                         Text="{Binding Name,Mode=TwoWay}">
                     </Entry>
                     <Label 
@@ -41,20 +41,20 @@
                         Grid.Row="1"
                         Grid.Column="1"
                         Keyboard="Email"
-                        Placeholder="Ingrese Correo."
+                        Placeholder="Ingrese correo."
                         Text="{Binding Email,Mode=TwoWay}">
                     </Entry>
                     <Label 
                         Grid.Row="2"
                         Grid.Column="0"
-                        Text="Correo:" 
+                        Text="Nuevamente Correo:" 
                         VerticalOptions="Center"
                     />
                     <Entry
                         Grid.Row="2"
                         Grid.Column="1"
                         Keyboard="Email"
-                        Placeholder="Re-Ingrese Correo."
+                        Placeholder="Re-ingrese correo."
                         Text="{Binding REmail,Mode=TwoWay}">
                     </Entry>
                     <Label 
@@ -67,20 +67,20 @@
                         Grid.Row="3"
                         Grid.Column="1"
                         IsPassword="True"
-                        Placeholder="Ingrese Contraseña."
+                        Placeholder="Ingrese contraseña."
                         Text="{Binding Password,Mode=TwoWay}">
                     </Entry>
                     <Label 
                         Grid.Row="4"
                         Grid.Column="0"
-                        Text="Constraseña:" 
+                        Text="Nuevamente Constraseña:" 
                         VerticalOptions="Center"
                     />
                     <Entry
                         Grid.Row="4"
                         Grid.Column="1"
                         IsPassword="True"
-                        Placeholder="Re-Ingrese Contraseña."
+                        Placeholder="Re-ingrese contraseña."
                         Text="{Binding RPassword,Mode=TwoWay}">
                     </Entry>
                 </Grid>

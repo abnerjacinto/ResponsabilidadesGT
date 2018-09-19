@@ -17,13 +17,13 @@
         #endregion
         private ApiService apiservice;
         #region attributes
-        private ObservableCollection<Obligacion> obligaciones;
+        private ObservableCollection<ObligacionItemViewModel> obligaciones;
         private bool isRefreshing;
         private string filter;
-        private List<Obligacion> ObligacionesList;
+        
         #endregion
         #region Properties
-        public ObservableCollection<Obligacion> Obligaciones
+        public ObservableCollection<ObligacionItemViewModel> Obligaciones
         {
             get { return obligaciones; }
             set { SetValue(ref obligaciones, value); }
@@ -63,7 +63,7 @@
                 await Application.Current.MainPage.Navigation.PopAsync();
                 return;
             }
-            var response = await this.apiservice.GetList<Obligacion>("http://192.168.1.9",
+            var response = await this.apiservice.GetList<Obligacion>("http://192.168.10.3",
                 "/ResponsabilidadesGT",
                 "/public/getobligacion");
             if (!response.IsSuccess)
@@ -74,9 +74,26 @@
                     response.Message,
                     "ok");
             }
-            this.ObligacionesList = (List<Obligacion>)response.Result;
-            this.Obligaciones = new ObservableCollection<Obligacion>(this.ObligacionesList);
+            MainViewModel.GetInstance().ObligacionesList = (List<Obligacion>)response.Result;
+            //this.ObligacionesList = (List<Obligacion>)response.Result;
+            this.Obligaciones = new ObservableCollection<ObligacionItemViewModel>(
+                this.ToItemObligacionViewModel());
+
             this.IsRefreshing = false;
+        }
+
+        private IEnumerable<ObligacionItemViewModel> ToItemObligacionViewModel()
+        {
+            return MainViewModel.GetInstance().ObligacionesList.Select(l => new ObligacionItemViewModel
+            {
+                IdObligacion = l.IdObligacion,
+                NombreObligacion=l.NombreObligacion,
+                EstadoObligacion=l.EstadoObligacion,
+                UsuarioAdicionoObligacion= l.UsuarioAdicionoObligacion,
+                FechaAdicionoObligacion= l.FechaAdicionoObligacion,
+                UsuarioModificoObligacion=l.UsuarioModificoObligacion,
+                FechaModificoObligacion=l.FechaModificoObligacion
+            });
         }
         #endregion
         #region Commands
@@ -99,12 +116,12 @@
         {
             if (string.IsNullOrEmpty(this.Filter))
             {
-                this.Obligaciones = new ObservableCollection<Obligacion>(this.ObligacionesList);
+                this.Obligaciones = new ObservableCollection<ObligacionItemViewModel>(this.ToItemObligacionViewModel());
             }
             else
             {
-                this.Obligaciones = new ObservableCollection<Obligacion>(
-                    this.ObligacionesList.Where(l =>l.NombreObligacion.ToLower().Contains(this.Filter)));
+                this.Obligaciones = new ObservableCollection<ObligacionItemViewModel>(
+                    this.ToItemObligacionViewModel().Where(l =>l.NombreObligacion.ToLower().Contains(this.Filter)));
             }
         }
         #endregion
