@@ -60,7 +60,7 @@
                     <Label 
                         Grid.Row="3"
                         Grid.Column="0"
-                        Text="Constraseña:" 
+                        Text="Constraseñaa:" 
                         VerticalOptions="Center"
                     />
                     <Entry
