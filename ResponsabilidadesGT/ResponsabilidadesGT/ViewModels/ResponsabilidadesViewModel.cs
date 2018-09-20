@@ -13,9 +13,9 @@
     public class ResponsabilidadesViewModel:BaseViewModel
     {
         #region Service
-
-        #endregion
         private ApiService apiservice;
+        #endregion
+
         #region attributes
         private ObservableCollection<ObligacionItemViewModel> obligaciones;
         private bool isRefreshing;
