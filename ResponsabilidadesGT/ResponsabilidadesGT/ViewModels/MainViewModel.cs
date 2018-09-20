@@ -7,6 +7,7 @@ namespace ResponsabilidadesGT.ViewModels
     class MainViewModel
     {
         #region Properties
+       
         public List<Obligacion> ObligacionesList
         {
             get;

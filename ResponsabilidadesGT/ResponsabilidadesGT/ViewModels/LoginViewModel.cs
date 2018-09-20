@@ -3,12 +3,16 @@
     using GalaSoft.MvvmLight.Command;
     using System.Windows.Input;
     using Xamarin.Forms;
+    using Services;
     using Views;
     public class LoginViewModel:BaseViewModel
     {
+        #region Service
+        private ApiService apiservice;
+        #endregion
 
         #region attributes
-            private string email;
+        private string email;
             private string password;
             private bool isEnabled; 
             private bool isRunning;
@@ -39,6 +43,7 @@
         #region Constructors
         public LoginViewModel()
         {
+            this.apiservice = new ApiService();
             this.IsRemember = true;
             this.IsEnabled = true;
         }
@@ -70,21 +75,52 @@
                     "Aceptar");
                 return;
             }
-            if (this.Email!="abner.jacinto@gmail.com" || this.Password!="1234")
+            var connection = await this.apiservice.CheckConnection();
+            if (!connection.IsSuccess)
             {
+                this.IsEnabled = true;
+                this.IsRunning = false;
                 await Application.Current.MainPage.DisplayAlert(
                     "Error",
-                    "Correo o contraseña no son válidos",
-                    "Aceptar");
+                    connection.Message,
+                    "Ok");
                 return;
             }
+            var token = await this.apiservice.GetToken("", this.Email, this.Password);
+
+            if(token==null)
+            {
+                this.IsEnabled = true;
+                this.IsRunning = false;
+                await Application.Current.MainPage.DisplayAlert(
+                    "Error",
+                    "Operación no completada, porfavor intente otra vez",
+                    "ok");
+                return;
+
+            }
+            if (string.IsNullOrEmpty(token.AccessToken))
+            {
+                this.IsEnabled = true;
+                this.IsRunning = false;
+                await Application.Current.MainPage.DisplayAlert(
+                    "Error",
+                    token.ErrorDescription,
+                    "ok");
+                this.Password = string.Empty;
+                return;
+            }
+            var mainViewModel = MainViewModel.GetInstance();
+            mainViewModel.Token = token;
+            mainViewModel.Responsabilidades= new ResponsabilidadesViewModel();
+            await Application.Current.MainPage.Navigation.PushAsync(new ResponsabilidadesPage());
             this.IsEnabled = true;
             this.IsRunning = false;
 
             this.Email = string.Empty;
             this.Password = string.Empty;
-            MainViewModel.GetInstance().Responsabilidades = new ResponsabilidadesViewModel();
-            await Application.Current.MainPage.Navigation.PushAsync(new ResponsabilidadesPage());
+           
+           
         }
         public ICommand RegisterCommand
         {
