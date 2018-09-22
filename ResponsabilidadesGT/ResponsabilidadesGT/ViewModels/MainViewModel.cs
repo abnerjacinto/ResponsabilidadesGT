@@ -13,6 +13,11 @@ namespace ResponsabilidadesGT.ViewModels
             get;
             set;
         }
+        public List<Glosario> GlosarioList
+        {
+            get;
+            set;
+        }
 
         public TokenResponse Token
         {
