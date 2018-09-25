@@ -63,7 +63,8 @@
                 await Application.Current.MainPage.Navigation.PopAsync();
                 return;
             }
-            var response = await this.apiservice.GetList<Obligacion>("http://192.168.10.3",
+            var url = Application.Current.Resources["UrlAPI"].ToString();
+            var response = await this.apiservice.GetList<Obligacion>(url,
                 "/ResponsabilidadesGT",
                 "/public/getobligacion");
             if (!response.IsSuccess)
