@@ -30,6 +30,7 @@ namespace ResponsabilidadesGT.ViewModels
         public ResponsabilidadesViewModel Responsabilidades { get; set; }
         public RegisterViewModel Register { get; set; }
         public GlosarioViewModel Glosario { get; set; }
+        public PuntoAtencionViewModel PuntoAtencion { get; set; }
         
         #endregion
         #region Constructor

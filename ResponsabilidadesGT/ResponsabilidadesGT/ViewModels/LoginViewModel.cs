@@ -75,6 +75,7 @@
                     "Aceptar");
                 return;
             }
+            /*
             var connection = await this.apiservice.CheckConnection();
             if (!connection.IsSuccess)
             {
@@ -109,9 +110,9 @@
                     "ok");
                 this.Password = string.Empty;
                 return;
-            }
+            }*/
             var mainViewModel = MainViewModel.GetInstance();
-            mainViewModel.Token = token;
+            //mainViewModel.Token = token;
             mainViewModel.Responsabilidades= new ResponsabilidadesViewModel();
             await Application.Current.MainPage.Navigation.PushAsync(new ResponsabilidadesPage());
             this.IsEnabled = true;

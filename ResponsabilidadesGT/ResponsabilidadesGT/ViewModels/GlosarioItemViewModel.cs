@@ -3,6 +3,7 @@
 namespace ResponsabilidadesGT.ViewModels
 {
     using Models;
+    using ResponsabilidadesGT.Views;
     using Xamarin.Forms;
 
     public class GlosarioItemViewModel:Glosario
@@ -10,7 +11,7 @@ namespace ResponsabilidadesGT.ViewModels
         #region Construct
         private async void SelectPuntos()
         {
-            MainViewModel.GetInstance().Glosario = new GlosarioViewModel(this);
+            MainViewModel.GetInstance().PuntoAtencion = new PuntoAtencionViewModel(this);
             await Application.Current.MainPage.Navigation.PushAsync(new PuntoAtencionPage());
         }
         #endregion

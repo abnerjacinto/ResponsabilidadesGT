@@ -43,7 +43,8 @@ namespace ResponsabilidadesGT.ViewModels
                     await Application.Current.MainPage.Navigation.PopAsync();
                     return;
                 }
-                var response = await this.apiservice.GetList<Glosario>("http://192.168.10.3",
+            var url = Application.Current.Resources["UrlAPI"].ToString();
+            var response = await this.apiservice.GetList<Glosario>(url,
                     "/ResponsabilidadesGT",
                     "/public/getglosario");
                 if (!response.IsSuccess)
@@ -58,23 +59,28 @@ namespace ResponsabilidadesGT.ViewModels
                 MainViewModel.GetInstance().GlosarioList = (List<Glosario>)response.Result;
                 //this.ObligacionesList = (List<Obligacion>)response.Result;
                 this.Glosarios  = new ObservableCollection<GlosarioItemViewModel>(
-                    this.ToItemGlosarioViewModel());
+                    this.ToItemGlosarioViewModel().Where(l => l.IdObligacion.Equals(this.Obligacion.IdObligacion)));
+           
 
-            
         }
         private IEnumerable<GlosarioItemViewModel> ToItemGlosarioViewModel()
         {
-            return MainViewModel.GetInstance().GlosarioList.Select(l => new ObligacionItemViewModel
+            return MainViewModel.GetInstance().GlosarioList.Select(g => new GlosarioItemViewModel
             {
-                IdObligacion = l.IdObligacion,
-                NombreObligacion = l.NombreObligacion,
-                EstadoObligacion = l.EstadoObligacion,
-                UsuarioAdicionoObligacion = l.UsuarioAdicionoObligacion,
-                FechaAdicionoObligacion = l.FechaAdicionoObligacion,
-                UsuarioModificoObligacion = l.UsuarioModificoObligacion,
-                FechaModificoObligacion = l.FechaModificoObligacion
+                IdGlosario = g.IdGlosario,
+                IdObligacion = g.IdObligacion,
+                IdPuntodeAtencion = g.IdPuntodeAtencion,
+                Descripcion = g.Descripcion,
+                FechaLimite = g.FechaLimite,
+                Link = g.Link,
+                UsuarioModificoGlosario = g.UsuarioModificoGlosario,
+                fechaModificoGlosario = g.fechaModificoGlosario,
+                UsuarioAdicionoGlosario=g.UsuarioAdicionoGlosario,
+                FechaAdicionoGlosario=g.FechaAdicionoGlosario
+                
             });
         }
         #endregion
+
     }
 }
