@@ -17,6 +17,76 @@
                     Text="{Binding Obligacion.NombreObligacion}"
                     TextColor="Black">
                 </Label>
+                <ListView 
+                
+                HasUnevenRows="true" 
+                ItemsSource="{Binding Glosarios}"
+                SeparatorVisibility="None">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Frame
+                                BackgroundColor="AliceBlue"
+                                CornerRadius="20"
+                                HasShadow="true"
+                                Margin="5">
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding SelectPuntoAtencionCommand}"/>
+                                    </Frame.GestureRecognizers>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="5*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackLayout 
+                                            Grid.Column="0"
+                                            Grid.Row="0"
+                                            VerticalOptions="Center">
+                                            <Label 
+                                                Text="Descripción:"
+                                                TextColor="Black">
+                                            </Label>
+                                            <Label
+                                                FontAttributes="Bold"
+                                                FontSize="Medium"
+                                                Text="{Binding Descripcion}"
+                                                TextColor="Black">
+                                            </Label>
+                                            <Label 
+                                            Text="Fecha límite de Pago:"
+                                            TextColor="Black">
+                                            </Label>
+                                            <Label
+                                            FontAttributes="Bold"
+                                            FontSize="Medium"
+                                            Text="{Binding FechaLimite}"
+                                            TextColor="Black">
+                                            </Label>
+                                            <Label 
+                                            Text="Más información:"
+                                            TextColor="Black">
+                                            </Label>
+                                            <Label
+                                            FontAttributes="Bold"
+                                            FontSize="Medium"
+                                            Text="{Binding Link}"
+                                            TextColor="Black">
+                                            </Label>
+                                        </StackLayout>
+                                        <Image 
+                                        Grid.Column="1"
+                                            Grid.Row="0"
+                                        HorizontalOptions="End" 
+                                        Source="ic_chevron_right">
+                                        </Image>
+                                    </Grid>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

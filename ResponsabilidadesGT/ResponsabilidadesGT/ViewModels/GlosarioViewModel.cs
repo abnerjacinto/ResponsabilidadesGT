@@ -8,15 +8,20 @@ namespace ResponsabilidadesGT.ViewModels
     using System.Linq;
     using Xamarin.Forms;
 
-    public class GlosarioViewModel
+    public class GlosarioViewModel:BaseViewModel
     {
+        private ObservableCollection<GlosarioItemViewModel> glosarios;
         #region Service
         private ApiService apiservice;
         #endregion
         #region Properties
         public Obligacion Obligacion { get; set; }
-        public Glosario Glosario { get; set; }
-        public ObservableCollection<GlosarioItemViewModel> Glosarios { get; set; }
+        
+        public ObservableCollection<GlosarioItemViewModel> Glosarios
+        {
+            get { return glosarios; }
+            set { SetValue(ref glosarios, value); }
+        }
          
         #endregion
 
@@ -60,7 +65,9 @@ namespace ResponsabilidadesGT.ViewModels
                 //this.ObligacionesList = (List<Obligacion>)response.Result;
                 this.Glosarios  = new ObservableCollection<GlosarioItemViewModel>(
                     this.ToItemGlosarioViewModel().Where(l => l.IdObligacion.Equals(this.Obligacion.IdObligacion)));
-           
+
+          
+
 
         }
         private IEnumerable<GlosarioItemViewModel> ToItemGlosarioViewModel()
