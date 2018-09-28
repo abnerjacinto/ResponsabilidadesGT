@@ -6,6 +6,7 @@
     using Services;
     using Views;
     using System.Text.RegularExpressions;
+    using ResponsabilidadesGT.Helpers;
 
     public class LoginViewModel:BaseViewModel
     {
@@ -130,9 +131,17 @@
                     return;
                 }*/
                 var mainViewModel = MainViewModel.GetInstance();
-                //mainViewModel.Token = token;
+                //mainViewModel.Token = token.AccessToken;
+                //mainViewModel.TokenType = token.TokenType;
+                if(this.IsRemember)
+                {
+                    //Settings.Token = token.AccessToken;
+                    //Settings.TokenType = token.TokenType;
+                }
+
                 mainViewModel.Responsabilidades = new ResponsabilidadesViewModel();
-                await Application.Current.MainPage.Navigation.PushAsync(new ResponsabilidadesPage());
+                Application.Current.MainPage=new MasterPage();
+
                 this.IsEnabled = true;
                 this.IsRunning = false;
 

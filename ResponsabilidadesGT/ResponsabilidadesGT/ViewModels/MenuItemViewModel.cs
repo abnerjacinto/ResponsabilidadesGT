@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight.Command;
+using ResponsabilidadesGT.Helpers;
 using ResponsabilidadesGT.Views;
 using System;
 using System.Collections.Generic;
@@ -25,21 +26,27 @@ namespace ResponsabilidadesGT.ViewModels
 
         private void Navigate()
         {
-            App.Master.IsPresented = false;
+            //App.Master.IsPresented = false;
 
             if (this.PageName == "LoginPage")
             {
                 Settings.IsRemembered = "false";
+                Settings.Token = String.Empty;
+                Settings.TokenType = string.Empty;
                 var mainViewModel = MainViewModel.GetInstance();
-                mainViewModel.Token = null;
-                mainViewModel.User = null;
+                mainViewModel.Token = string.Empty;
+                mainViewModel.TokenType = string.Empty;
+                //mainViewModel.User = null;
                 Application.Current.MainPage = new NavigationPage(
                     new LoginPage());
             }
-            else if (this.PageName == "MyProfilePage")
+            else if (this.PageName == "ResponsabilidadesPage")
             {
-                MainViewModel.GetInstance().MyProfile = new MyProfileViewModel();
-                App.Navigator.PushAsync(new MyProfilePage());
+                var mainViewModel = MainViewModel.GetInstance();
+                mainViewModel.Responsabilidades = new ResponsabilidadesViewModel();
+                App.Navigator.PushAsync(new ResponsabilidadesPage());
+                //MainViewModel.GetInstance().MyProfile = new MyProfileViewModel();
+                //App.Navigator.PushAsync(new MyProfilePage());
             }
         }
         #endregion

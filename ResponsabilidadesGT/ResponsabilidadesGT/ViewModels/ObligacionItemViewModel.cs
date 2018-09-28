@@ -22,7 +22,7 @@ namespace ResponsabilidadesGT.ViewModels
         private async void SelectObligacion()
         {
             MainViewModel.GetInstance().Glosario = new GlosarioViewModel(this);
-            await Application.Current.MainPage.Navigation.PushAsync(new GlosarioPage());
+            await App.Navigator.PushAsync(new GlosarioPage());
         }
         #endregion
     }

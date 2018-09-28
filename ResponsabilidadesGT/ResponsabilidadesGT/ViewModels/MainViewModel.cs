@@ -21,11 +21,8 @@ namespace ResponsabilidadesGT.ViewModels
             set;
         }
 
-        public TokenResponse Token
-        {
-            get;
-            set;
-        }
+        public string Token { get; set; }
+        public string TokenType { get; set; }
         public ObservableCollection<MenuItemViewModel> Menus
         {
             get; set;
@@ -76,6 +73,13 @@ namespace ResponsabilidadesGT.ViewModels
                 Icon = "ic_exit_to_app",
                 Title = "Salir",
                 PageName = "LoginPage",
+            });
+
+            this.Menus.Add(new MenuItemViewModel
+            {
+                Icon = "ic_insert_invitation",
+                Title = "Responsabilidades en Linea",
+                PageName = "ResponsabilidadesPage",
             });
         }
         #endregion
