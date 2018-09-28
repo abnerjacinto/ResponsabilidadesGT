@@ -2,7 +2,9 @@
 
 namespace ResponsabilidadesGT.ViewModels
 {
+    using System;
     using System.Collections.Generic;
+    using System.Collections.ObjectModel;
     using Models;
     class MainViewModel
     {
@@ -24,6 +26,10 @@ namespace ResponsabilidadesGT.ViewModels
             get;
             set;
         }
+        public ObservableCollection<MenuItemViewModel> Menus
+        {
+            get; set;
+        }
         #endregion
         #region ViewModel
         public LoginViewModel Login { get; set; }
@@ -38,8 +44,11 @@ namespace ResponsabilidadesGT.ViewModels
         {
             instance = this;
             this.Login = new LoginViewModel();
+            this.LoadMenu();
           
         }
+
+        
         #endregion
         #region Singleton
         private static MainViewModel instance;
@@ -52,6 +61,23 @@ namespace ResponsabilidadesGT.ViewModels
             return instance;
         }
         #endregion
-
+        #region methods
+        private void LoadMenu()
+        {
+            this.Menus = new ObservableCollection<MenuItemViewModel>();
+            this.Menus.Add(new MenuItemViewModel
+            {
+                Icon = "ic_settings",
+                Title = "Mi Perfil",
+                PageName = "PerfilPage",
+            });
+            this.Menus.Add(new MenuItemViewModel
+            {
+                Icon = "ic_exit_to_app",
+                Title = "Salir",
+                PageName = "LoginPage",
+            });
+        }
+        #endregion
     }
 }
