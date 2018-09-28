@@ -5,6 +5,8 @@
     using Xamarin.Forms;
     using Services;
     using Views;
+    using System.Text.RegularExpressions;
+
     public class LoginViewModel:BaseViewModel
     {
         #region Service
@@ -63,65 +65,82 @@
             {
                 await Application.Current.MainPage.DisplayAlert(
                     "Error",
-                    "Debe de ingresar un correo",
+                    "Ingrese correo electrónico",
                     "Aceptar");
-                return;
-            }
-            if (string.IsNullOrEmpty(this.Password))
-            {
-                await Application.Current.MainPage.DisplayAlert(
-                    "Error",
-                    "Debe de ingresar una contraseña",
-                    "Aceptar");
-                return;
-            }
-            /*
-            var connection = await this.apiservice.CheckConnection();
-            if (!connection.IsSuccess)
-            {
-                this.IsEnabled = true;
-                this.IsRunning = false;
-                await Application.Current.MainPage.DisplayAlert(
-                    "Error",
-                    connection.Message,
-                    "Ok");
-                return;
-            }
-            var token = await this.apiservice.GetToken("", this.Email, this.Password);
 
-            if(token==null)
-            {
-                this.IsEnabled = true;
-                this.IsRunning = false;
-                await Application.Current.MainPage.DisplayAlert(
-                    "Error",
-                    "Operación no completada, porfavor intente otra vez",
-                    "ok");
                 return;
-
             }
-            if (string.IsNullOrEmpty(token.AccessToken))
+            else
             {
+                bool isEmail = Regex.IsMatch(
+                    this.Email,
+                    @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z",
+                    RegexOptions.IgnoreCase);
+                if (!isEmail)
+                {
+                    await Application.Current.MainPage.DisplayAlert(
+                        "Advertencia",
+                        "El formato del correo electrónico es incorrecto, revíselo e intente de nuevo.",
+                        "Aceptar");
+                    this.Email = string.Empty;
+                    return;
+                }
+                if (string.IsNullOrEmpty(this.Password))
+                {
+                    await Application.Current.MainPage.DisplayAlert(
+                        "Error",
+                        "Debe de ingresar una contraseña",
+                        "Aceptar");
+                    return;
+                }
+                /*
+                var connection = await this.apiservice.CheckConnection();
+                if (!connection.IsSuccess)
+                {
+                    this.IsEnabled = true;
+                    this.IsRunning = false;
+                    await Application.Current.MainPage.DisplayAlert(
+                        "Error",
+                        connection.Message,
+                        "Ok");
+                    return;
+                }
+                var token = await this.apiservice.GetToken("", this.Email, this.Password);
+
+                if(token==null)
+                {
+                    this.IsEnabled = true;
+                    this.IsRunning = false;
+                    await Application.Current.MainPage.DisplayAlert(
+                        "Error",
+                        "Operación no completada, porfavor intente otra vez",
+                        "ok");
+                    return;
+
+                }
+                if (string.IsNullOrEmpty(token.AccessToken))
+                {
+                    this.IsEnabled = true;
+                    this.IsRunning = false;
+                    await Application.Current.MainPage.DisplayAlert(
+                        "Error",
+                        token.ErrorDescription,
+                        "ok");
+                    this.Password = string.Empty;
+                    return;
+                }*/
+                var mainViewModel = MainViewModel.GetInstance();
+                //mainViewModel.Token = token;
+                mainViewModel.Responsabilidades = new ResponsabilidadesViewModel();
+                await Application.Current.MainPage.Navigation.PushAsync(new ResponsabilidadesPage());
                 this.IsEnabled = true;
                 this.IsRunning = false;
-                await Application.Current.MainPage.DisplayAlert(
-                    "Error",
-                    token.ErrorDescription,
-                    "ok");
+
+                this.Email = string.Empty;
                 this.Password = string.Empty;
-                return;
-            }*/
-            var mainViewModel = MainViewModel.GetInstance();
-            //mainViewModel.Token = token;
-            mainViewModel.Responsabilidades= new ResponsabilidadesViewModel();
-            await Application.Current.MainPage.Navigation.PushAsync(new ResponsabilidadesPage());
-            this.IsEnabled = true;
-            this.IsRunning = false;
 
-            this.Email = string.Empty;
-            this.Password = string.Empty;
-           
-           
+
+            }
         }
         public ICommand RegisterCommand
         {

@@ -82,11 +82,28 @@
                                         Source="ic_chevron_right">
                                         </Image>
                                     </Grid>
+                                    
                                 </Frame>
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
+                <StackLayout
+                    Orientation="Horizontal"
+                    HorizontalOptions="Center"
+                    Margin="40">
+
+                    <Button 
+                        Text="Agregar a mis Responsabilidades"
+                        HeightRequest="46"
+                        BackgroundColor="MediumPurple"
+                        TextColor="White"
+                        BorderRadius="23"
+                        HorizontalOptions="FillAndExpand"
+                        Command="{Binding AddObligacionCommand}"
+                        IsEnabled="{Binding IsEnabled,Mode=TwoWay}">
+                    </Button>
+                </StackLayout>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
