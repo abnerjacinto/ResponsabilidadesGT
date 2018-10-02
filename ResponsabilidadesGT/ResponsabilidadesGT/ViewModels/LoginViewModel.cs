@@ -73,7 +73,7 @@
             }
             else
             {
-                bool isEmail = Regex.IsMatch(
+             /*   bool isEmail = Regex.IsMatch(
                     this.Email,
                     @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z",
                     RegexOptions.IgnoreCase);
@@ -85,7 +85,7 @@
                         "Aceptar");
                     this.Email = string.Empty;
                     return;
-                }
+                }*/
                 if (string.IsNullOrEmpty(this.Password))
                 {
                     await Application.Current.MainPage.DisplayAlert(
@@ -94,7 +94,8 @@
                         "Aceptar");
                     return;
                 }
-                /*
+                this.IsEnabled = false;
+                this.IsRunning = true;
                 var connection = await this.apiservice.CheckConnection();
                 if (!connection.IsSuccess)
                 {
@@ -106,7 +107,10 @@
                         "Ok");
                     return;
                 }
-                var token = await this.apiservice.GetToken("", this.Email, this.Password);
+                var url = Application.Current.Resources["UrlAPI"].ToString();
+                var Fix = Application.Current.Resources["UrlFix"].ToString();
+                var Res = Application.Current.Resources["UrlRes"].ToString();
+                var token = await this.apiservice.GetToken("http://192.168.10.3/ResponsabilidadesAPI/public/", this.Email, this.Password);
 
                 if(token==null)
                 {
@@ -119,23 +123,23 @@
                     return;
 
                 }
-                if (string.IsNullOrEmpty(token.AccessToken))
+                if (!token.Success)
                 {
                     this.IsEnabled = true;
                     this.IsRunning = false;
                     await Application.Current.MainPage.DisplayAlert(
                         "Error",
-                        token.ErrorDescription,
+                        token.Message,
                         "ok");
                     this.Password = string.Empty;
                     return;
-                }*/
+                }
                 var mainViewModel = MainViewModel.GetInstance();
-                //mainViewModel.Token = token.AccessToken;
+                mainViewModel.Token = token.Token;
                 //mainViewModel.TokenType = token.TokenType;
                 if(this.IsRemember)
                 {
-                    //Settings.Token = token.AccessToken;
+                    Settings.Token = token.Token;
                     //Settings.TokenType = token.TokenType;
                 }
 

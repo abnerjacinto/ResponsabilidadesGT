@@ -53,9 +53,9 @@ namespace ResponsabilidadesGT.Services
             {
                 var client = new HttpClient();
                 client.BaseAddress = new Uri(urlBase);
-                var response = await client.PostAsync("Token",
+                var response = await client.PostAsync("login",
                     new StringContent(string.Format(
-                    "grant_type=password&username={0}&password={1}",
+                    "txtName={0}&txtPwd={1}",
                     username, password),
                     Encoding.UTF8, "application/x-www-form-urlencoded"));
                 var resultJSON = await response.Content.ReadAsStringAsync();

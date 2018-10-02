@@ -13,7 +13,10 @@
         {
             get; internal set;
         }
-        public static object Master { get; internal set; }
+        public static MasterPage Master
+        {
+            get; internal set;
+        }
 
         public App()
         {

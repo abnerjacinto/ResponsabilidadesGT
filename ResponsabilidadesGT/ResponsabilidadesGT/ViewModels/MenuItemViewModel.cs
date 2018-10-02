@@ -26,13 +26,13 @@ namespace ResponsabilidadesGT.ViewModels
 
         private void Navigate()
         {
-            //App.Master.IsPresented = false;
+            App.Master.IsPresented = false;
 
             if (this.PageName == "LoginPage")
             {
                 Settings.IsRemembered = "false";
                 Settings.Token = String.Empty;
-                Settings.TokenType = string.Empty;
+                //Settings.TokenType = string.Empty;
                 var mainViewModel = MainViewModel.GetInstance();
                 mainViewModel.Token = string.Empty;
                 mainViewModel.TokenType = string.Empty;
@@ -45,6 +45,7 @@ namespace ResponsabilidadesGT.ViewModels
                 var mainViewModel = MainViewModel.GetInstance();
                 mainViewModel.Responsabilidades = new ResponsabilidadesViewModel();
                 App.Navigator.PushAsync(new ResponsabilidadesPage());
+                
                 //MainViewModel.GetInstance().MyProfile = new MyProfileViewModel();
                 //App.Navigator.PushAsync(new MyProfilePage());
             }
