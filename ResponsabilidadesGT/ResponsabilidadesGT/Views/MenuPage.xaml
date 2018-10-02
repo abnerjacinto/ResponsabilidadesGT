@@ -9,7 +9,11 @@
     <ContentPage.Content>
         <StackLayout
             Padding="5,20,5,5">
-            
+            <Image
+                Source="Responsabilidades"
+                WidthRequest="150">
+                
+            </Image>
             <Label
                 FontSize="Large"
                 FontAttributes="Bold"
