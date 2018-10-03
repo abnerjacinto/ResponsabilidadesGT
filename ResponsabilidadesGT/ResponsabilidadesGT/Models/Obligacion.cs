@@ -1,10 +1,15 @@
 ﻿namespace ResponsabilidadesGT.Models
 {
     using Newtonsoft.Json;
+    using SQLite.Net.Attributes;
+    using SQLiteNetExtensions.Attributes;
+    using System.Collections.Generic;
+
     public class Obligacion
     {
         #region Properties
         [JsonProperty(PropertyName = "id_obligacion")]
+        [PrimaryKey]
         public int IdObligacion { get; set; }
         [JsonProperty(PropertyName = "nombre_obligacion")]
         public string NombreObligacion { get; set; }
@@ -18,6 +23,14 @@
         public object UsuarioModificoObligacion { get; set; }
         [JsonProperty(PropertyName = "fecha_modifico_obligacion")]
         public object FechaModificoObligacion { get; set; }
+        [OneToMany(CascadeOperations = CascadeOperation.All)]
+        public List<Actividad> Actividades { get; set; }
+        [OneToMany(CascadeOperations = CascadeOperation.All)]
+        public List<Glosario> Glosarios { get; set; }
+        public override int GetHashCode()
+        {
+            return IdObligacion;
+        }
         #endregion
     }
 }

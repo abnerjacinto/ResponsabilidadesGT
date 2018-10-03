@@ -1,9 +1,14 @@
 ﻿namespace ResponsabilidadesGT.Models
 {
     using Newtonsoft.Json;
+    using SQLite.Net.Attributes;
+    using SQLiteNetExtensions.Attributes;
+    using System.Collections.Generic;
+
     public class PuntodeAtencion
     {
         [JsonProperty(PropertyName = "id_punto_de_atencion")]
+        [PrimaryKey]
         public int IdPuntodeAtencion { get; set; }
         [JsonProperty(PropertyName = "institucion")]
         public string Institucion { get; set; }
@@ -19,5 +24,12 @@
         public object UsuarioModificoPunto { get; set; }
         [JsonProperty(PropertyName = "fecha_modifico_punto")]
         public object FechaModificoPunto { get; set; }
+        [OneToMany(CascadeOperations = CascadeOperation.All)]
+        public List<Glosario> Glosarios { get; set; }
+
+        public override int GetHashCode()
+        {
+            return IdPuntodeAtencion;
+        }
     }
 }

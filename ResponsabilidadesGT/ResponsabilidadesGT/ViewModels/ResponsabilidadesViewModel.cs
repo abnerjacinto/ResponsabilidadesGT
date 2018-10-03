@@ -60,13 +60,14 @@
                     "Error",
                     connection.Message,
                     "ok");
-                await Application.Current.MainPage.Navigation.PopAsync();
                 return;
             }
             var url = Application.Current.Resources["UrlAPI"].ToString();
+            var Fix = Application.Current.Resources["UrlFix"].ToString();
+            var Res = Application.Current.Resources["UrlRes"].ToString();
             var response = await this.apiservice.GetList<Obligacion>(url,
-                "/ResponsabilidadesGT",
-                "/public/getobligacion");
+                Fix,
+                Res);
             if (!response.IsSuccess)
             {
                 this.IsRefreshing = false;
@@ -74,11 +75,11 @@
                     "Error",
                     response.Message,
                     "ok");
+                return;
             }
             MainViewModel.GetInstance().ObligacionesList = (List<Obligacion>)response.Result;
-            //this.ObligacionesList = (List<Obligacion>)response.Result;
             this.Obligaciones = new ObservableCollection<ObligacionItemViewModel>(
-                this.ToItemObligacionViewModel());
+            this.ToItemObligacionViewModel());
 
             this.IsRefreshing = false;
         }

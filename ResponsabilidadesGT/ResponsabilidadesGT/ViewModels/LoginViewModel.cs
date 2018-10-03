@@ -107,12 +107,12 @@
                         "Ok");
                     return;
                 }
-                var url = Application.Current.Resources["UrlAPI"].ToString();
+                var Url = Application.Current.Resources["UrlAPI"].ToString();
                 var Fix = Application.Current.Resources["UrlFix"].ToString();
                 var Res = Application.Current.Resources["UrlRes"].ToString();
-                var token = await this.apiservice.GetToken("http://192.168.10.3/ResponsabilidadesAPI/public/", this.Email, this.Password);
+                var token = await this.apiservice.GetToken("http://192.168.10.3/ResponsabilidadesAPi/public/", this.Email, this.Password);
 
-                if(token==null)
+                if (token==null)
                 {
                     this.IsEnabled = true;
                     this.IsRunning = false;
@@ -143,7 +143,7 @@
                     //Settings.TokenType = token.TokenType;
                 }
 
-                mainViewModel.Responsabilidades = new ResponsabilidadesViewModel();
+                //mainViewModel.Responsabilidades = new ResponsabilidadesViewModel();
                 Application.Current.MainPage=new MasterPage();
 
                 this.IsEnabled = true;

@@ -64,22 +64,23 @@ namespace ResponsabilidadesGT.ViewModels
             this.Menus = new ObservableCollection<MenuItemViewModel>();
             this.Menus.Add(new MenuItemViewModel
             {
+                Icon = "ic_insert_invitation",
+                Title = "Responsabilidades en Linea",
+                PageName = "ResponsabilidadesPage",
+            });
+
+            this.Menus.Add(new MenuItemViewModel
+            {
                 Icon = "ic_settings",
                 Title = "Mi Perfil",
                 PageName = "PerfilPage",
-            });
+            });         
+          
             this.Menus.Add(new MenuItemViewModel
             {
                 Icon = "ic_exit_to_app",
                 Title = "Salir",
                 PageName = "LoginPage",
-            });
-
-            this.Menus.Add(new MenuItemViewModel
-            {
-                Icon = "ic_insert_invitation",
-                Title = "Responsabilidades en Linea",
-                PageName = "ResponsabilidadesPage",
             });
         }
         #endregion
