@@ -19,9 +19,9 @@ namespace ResponsabilidadesGT.Models
         public string UsuarioModifico { get; set; }
         public string FechaModificacion { get; set; }
         [ForeignKey(typeof(Usuario))]
-        public int IdUsuario { get; set; }
+        public int? IdUsuario { get; set; }
         [ForeignKey(typeof(Obligacion))]
-        public int IdObligacion { get; set; }
+        public int? IdObligacion { get; set; }
         public override int GetHashCode()
         {
             return IdActividad;

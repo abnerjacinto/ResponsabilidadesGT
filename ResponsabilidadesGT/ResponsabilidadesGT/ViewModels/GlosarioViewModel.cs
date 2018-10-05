@@ -56,7 +56,7 @@ namespace ResponsabilidadesGT.ViewModels
             var Res = Application.Current.Resources["UrlRes"].ToString();
             var response = await this.apiservice.GetList<Glosario>(url,
                     Fix,
-                    Res);
+                   "/public/getglosario");
             if (!response.IsSuccess)
             {
 
@@ -102,12 +102,9 @@ namespace ResponsabilidadesGT.ViewModels
             }
         }
 
-        private async void SaveObligacion()
+        private  void SaveObligacion()
         {
-            await Application.Current.MainPage.DisplayAlert(
-                    "Error",
-                    "prueba del boton",
-                    "ok");
+            
         }
         #endregion
 
