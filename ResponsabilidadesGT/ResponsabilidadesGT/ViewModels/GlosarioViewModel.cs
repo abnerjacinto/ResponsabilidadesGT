@@ -4,6 +4,7 @@ namespace ResponsabilidadesGT.ViewModels
     using GalaSoft.MvvmLight.Command;
     using Models;
     using Services;
+    using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Linq;
@@ -97,8 +98,16 @@ namespace ResponsabilidadesGT.ViewModels
         {
             get
             {
-                return new RelayCommand();
+                return new RelayCommand(SaveObligacion);
             }
+        }
+
+        private async void SaveObligacion()
+        {
+            await Application.Current.MainPage.DisplayAlert(
+                    "Error",
+                    "prueba del boton",
+                    "ok");
         }
         #endregion
 

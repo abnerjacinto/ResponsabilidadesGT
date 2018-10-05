@@ -1,83 +1,78 @@
 ﻿namespace ResponsabilidadesGT.Helpers
 {
-    using Interfaces;
-    using Models;
-    using SQLite.Net;
-    using SQLiteNetExtensions.Extensions;
-    using System;
     using System.Collections.Generic;
-    using System.IO;
     using System.Linq;
+    using System.Threading.Tasks;
+    using Models;
+    using Interfaces;
+    using SQLite;
     using Xamarin.Forms;
 
-    public class DataAccess : IDisposable
+    public class DataService
     {
-        private SQLiteConnection connection;
+        private SQLiteAsyncConnection connection;
 
-        public DataAccess()
+        public DataService()
         {
-            var config = DependencyService.Get<IConfig>();
-            this.connection = new SQLiteConnection(
-                config.Platform,
-                Path.Combine(config.DirectoryDB, "Responsabilidades.db3"));
-            connection.CreateTable<Actividad>();
-            connection.CreateTable<TokenResponse>();
+            this.OpenOrCreateDB();
         }
 
-        public void Insert<T>(T model)
+        private async Task OpenOrCreateDB()
         {
-            this.connection.Insert(model);
+            var databasePath = DependencyService.Get<IPathService>().GetDatabasePath();
+            this.connection = new SQLiteAsyncConnection(databasePath);
+            await connection.CreateTableAsync<Actividad>().ConfigureAwait(false);
         }
 
-        public void Update<T>(T model)
+        public async Task Insert<T>(T model)
         {
-            this.connection.Update(model);
+            await this.connection.InsertAsync(model);
         }
 
-        public void Delete<T>(T model)
+        public async Task Insert<T>(List<T> models)
         {
-            this.connection.Delete(model);
+            await this.connection.InsertAllAsync(models);
         }
 
-        public T First<T>(bool WithChildren) where T : class
+        public async Task Update<T>(T model)
         {
-            if (WithChildren)
+            await this.connection.UpdateAsync(model);
+        }
+
+        public async Task Update<T>(List<T> models)
+        {
+            await this.connection.UpdateAllAsync(models);
+        }
+
+        public async Task Delete<T>(T model)
+        {
+            await this.connection.DeleteAsync(model);
+        }
+
+        public async Task<List<Actividad>> GetAllProducts()
+        {
+            var query = await this.connection.QueryAsync<Actividad>("select * from [Product]");
+            var array = query.ToArray();
+            var list = array.Select(a => new Actividad
             {
-                return connection.GetAllWithChildren<T>().FirstOrDefault();
-            }
-            else
-            {
-                return connection.Table<T>().FirstOrDefault();
-            }
+               IdActividad= a.IdActividad,
+                FechaAviso = a.FechaAviso,
+                Prorroga = a.Prorroga,
+                EstadoActvidad = a.EstadoActvidad,
+                UsuarioAdiciono = a.UsuarioAdiciono,
+                FechaAdiciono = a.FechaAdiciono,
+                UsuarioModifico =a.UsuarioModifico,
+                FechaModificacion=a.FechaModificacion,
+                IdObligacion=a.IdObligacion,
+                IdUsuario=a.IdUsuario,
+            }).ToList();
+            return list;
         }
 
-        public List<T> GetList<T>(bool WithChildren) where T : class
+        public async Task DeleteAllProducts()
         {
-            if (WithChildren)
-            {
-                return connection.GetAllWithChildren<T>().ToList();
-            }
-            else
-            {
-                return connection.Table<T>().ToList();
-            }
-        }
-
-        public T Find<T>(int pk, bool WithChildren) where T : class
-        {
-            if (WithChildren)
-            {
-                return connection.GetAllWithChildren<T>().FirstOrDefault(m => m.GetHashCode() == pk);
-            }
-            else
-            {
-                return connection.Table<T>().FirstOrDefault(m => m.GetHashCode() == pk);
-            }
-        }
-
-        public void Dispose()
-        {
-            connection.Dispose();
+            var query = await this.connection.QueryAsync<Actividad>("delete from [Actividad]");
         }
     }
+
 }
