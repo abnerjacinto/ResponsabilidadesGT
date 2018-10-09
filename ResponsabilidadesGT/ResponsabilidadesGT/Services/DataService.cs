@@ -22,6 +22,7 @@ public class DataService
         var databasePath = DependencyService.Get<IPathService>().GetDatabasePath();
         this.connection = new SQLiteAsyncConnection(databasePath);
         await connection.CreateTableAsync<Actividad>().ConfigureAwait(false);
+        await connection.CreateTableAsync<Glosario>().ConfigureAwait(false);
     }
 
     public async Task Insert<T>(T model)

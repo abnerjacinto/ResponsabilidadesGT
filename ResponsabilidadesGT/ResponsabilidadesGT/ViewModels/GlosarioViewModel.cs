@@ -16,6 +16,7 @@ namespace ResponsabilidadesGT.ViewModels
         private ObservableCollection<GlosarioItemViewModel> glosarios;
         #region Service
         private ApiService apiservice;
+        private DataService dataservice;
         #endregion
         #region Properties
         public Obligacion Obligacion { get; set; }
@@ -34,6 +35,7 @@ namespace ResponsabilidadesGT.ViewModels
         {
             this.Obligacion = obligacion;
             this.apiservice = new ApiService();
+            this.dataservice = new DataService();
             this.LoadGlosario();
         }
         #endregion
@@ -56,7 +58,7 @@ namespace ResponsabilidadesGT.ViewModels
             var Res = Application.Current.Resources["UrlRes"].ToString();
             var response = await this.apiservice.GetList<Glosario>(url,
                     Fix,
-                   "/public/getglosario");
+                   $"{Res}/getglosario");
             if (!response.IsSuccess)
             {
 
@@ -67,9 +69,8 @@ namespace ResponsabilidadesGT.ViewModels
             }
 
             MainViewModel.GetInstance().GlosarioList = (List<Glosario>)response.Result;
-            //this.ObligacionesList = (List<Obligacion>)response.Result;
             this.Glosarios = new ObservableCollection<GlosarioItemViewModel>(
-                this.ToItemGlosarioViewModel().Where(l => l.IdObligacion.Equals(this.Obligacion.IdObligacion)));
+            this.ToItemGlosarioViewModel().Where(l => l.IdObligacion.Equals(this.Obligacion.IdObligacion)));
 
 
 
@@ -102,9 +103,22 @@ namespace ResponsabilidadesGT.ViewModels
             }
         }
 
-        private  void SaveObligacion()
+        private  async void SaveObligacion()
         {
-            
+            var result = await Application.Current.MainPage.DisplayAlert(
+                "Guardar",
+                "Desea guardar los datos a sus Responsabilidades", 
+                "Aceptar", 
+                "Cancelar"); 
+            if (result == true)
+            {
+                dataservice.Insert<Obligacion>(this.Obligacion);
+                dataservice.Insert<Glosario>(Glosarios);
+            }
+            else 
+            {
+                return;
+            }
         }
         #endregion
 
