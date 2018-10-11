@@ -72,7 +72,12 @@
                                             FontAttributes="Bold"
                                             FontSize="Medium"
                                             Text="{Binding Link}"
-                                            TextColor="Black">
+                                            TextColor="Blue">
+                                                <Label.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding UrlCommand}"
+                                                                          CommandParameter="{Binding Link}"/>
+                                                </Label.GestureRecognizers>
+                                                
                                             </Label>
                                         </StackLayout>
                                         <Image 

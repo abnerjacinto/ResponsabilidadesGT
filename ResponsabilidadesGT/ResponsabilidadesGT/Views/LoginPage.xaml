@@ -4,7 +4,7 @@
              x:Class="ResponsabilidadesGT.Views.LoginPage"
              xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             Title="Login">
+             Title="Inicio de Sesión">
     <ContentPage.Content>
         <ScrollView
             BindingContext="{Binding Login}">
@@ -36,7 +36,7 @@
                     <Image 
                         Grid.Row="1"
                         Grid.Column="0"
-                        Source="iconPassword"
+                        Source="iconUsername"
                         HeightRequest="30" 
                         VerticalOptions="Center"
                     />

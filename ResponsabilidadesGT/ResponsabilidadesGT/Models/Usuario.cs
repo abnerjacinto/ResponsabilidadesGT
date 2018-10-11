@@ -1,11 +1,8 @@
-﻿using SQLite.Net.Attributes;
-using SQLiteNetExtensions.Attributes;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ResponsabilidadesGT.Models
+﻿namespace ResponsabilidadesGT.Models
 {
+    using SQLite;
+    using SQLiteNetExtensions.Attributes;
+    using System.Collections.Generic;
     public class Usuario
     {
         [PrimaryKey]
@@ -13,11 +10,8 @@ namespace ResponsabilidadesGT.Models
         public string NombreUsuario { get; set; }
         public string Password { get; set; }
         public string email { get; set; }
-        [OneToMany(CascadeOperations =CascadeOperation.All)]
-        public List<Actividad> Actividades { get; set; }
-        public override int GetHashCode()
-        {
-            return IdUsuario;
-        }
+        //[OneToMany(CascadeOperations =CascadeOperation.All)]
+        //public List<Actividad> Actividades { get; set; }
+        
     }
 }

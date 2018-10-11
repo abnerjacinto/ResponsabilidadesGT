@@ -20,6 +20,11 @@ namespace ResponsabilidadesGT.ViewModels
             get;
             set;
         }
+        public List<PuntodeAtencion> PuntoList
+        {
+            get;
+            set;
+        }
 
         public string Token { get; set; }
         public string TokenType { get; set; }
@@ -34,12 +39,14 @@ namespace ResponsabilidadesGT.ViewModels
         public RegisterViewModel Register { get; set; }
         public GlosarioViewModel Glosario { get; set; }
         public PuntoAtencionViewModel PuntoAtencion { get; set; }
+        public PrincipalViewModel Principal { get; set; }
         
         #endregion
         #region Constructor
         public MainViewModel()
         {
             instance = this;
+            //this.Principal = new PrincipalViewModel();
             this.Login = new LoginViewModel();
             this.LoadMenu();
           

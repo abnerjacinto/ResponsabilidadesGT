@@ -1,12 +1,80 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ResponsabilidadesGT.Views.PuntoAtencionPage">
+             x:Class="ResponsabilidadesGT.Views.PuntoAtencionPage"
+            BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="Punto de Atención">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView
+            BindingContext="{Binding PuntoAtencion}">
+            <StackLayout>
+                <Label
+                    FontSize="Large"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center"
+                    Text="tes"
+                    TextColor="Black">
+                </Label>
+                <ListView 
+                HasUnevenRows="true" 
+                ItemsSource="{Binding PuntodeAtencion}"
+                SeparatorVisibility="None">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Frame
+                                BackgroundColor="White"
+                                CornerRadius="20"
+                                HasShadow="true"
+                                Margin="5">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            
+                                        </Grid.ColumnDefinitions>
+                                        <StackLayout 
+                                            Grid.Column="0"
+                                            Grid.Row="0"
+                                            VerticalOptions="Center">
+                                            <Label 
+                                                Text="Institución:"
+                                                TextColor="Black">
+                                            </Label>
+                                            <Label
+                                                FontAttributes="Bold"
+                                                FontSize="Medium"
+                                                Text="{Binding Institucion}"
+                                                TextColor="Black">
+                                            </Label>
+                                            <Label 
+                                                Text="Dirección:"
+                                                TextColor="Black">
+                                            </Label>
+                                            <Label
+                                                FontAttributes="Bold"
+                                                FontSize="Medium"
+                                                Text="{Binding Direccion}"
+                                                TextColor="Black">
+                                            </Label>
+                                            <Label 
+                                                Text="Teléfono:"
+                                                TextColor="Black">
+                                            </Label>
+                                            <Label
+                                            FontAttributes="Bold"
+                                            FontSize="Medium"
+                                            Text="{Binding Telefono}"
+                                            TextColor="Black">
+                                            </Label>
+                                        </StackLayout>
+                                        
+                                    </Grid>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>      
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

@@ -11,13 +11,19 @@ namespace ResponsabilidadesGT.ViewModels
     public class GlosarioItemViewModel:Glosario
     {
         #region Command
-       
+        public ICommand SelectPuntoAtencionCommand
+        {
+            get
+            {
+                return new RelayCommand(SelectPuntos);
+            }
+        }
         #endregion
         #region Construct
         private async void SelectPuntos()
         {
             MainViewModel.GetInstance().PuntoAtencion = new PuntoAtencionViewModel(this);
-            await Application.Current.MainPage.Navigation.PushAsync(new PuntoAtencionPage());
+            await App.Navigator.PushAsync(new PuntoAtencionPage());
             
         }
         #endregion

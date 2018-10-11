@@ -1,12 +1,8 @@
-﻿using SQLite.Net.Attributes;
-using SQLiteNetExtensions.Attributes;
-
-
-namespace ResponsabilidadesGT.Models
+﻿namespace ResponsabilidadesGT.Models
 {
-    using SQLite.Net.Attributes;
+    using SQLite;
     using SQLiteNetExtensions.Attributes;
-    using Models;
+
     public class Actividad
     {
         [PrimaryKey]
@@ -18,14 +14,11 @@ namespace ResponsabilidadesGT.Models
         public string FechaAdiciono { get; set; }
         public string UsuarioModifico { get; set; }
         public string FechaModificacion { get; set; }
-        [ForeignKey(typeof(Usuario))]
+        //[ForeignKey(typeof(Usuario))]
         public int? IdUsuario { get; set; }
-        [ForeignKey(typeof(Obligacion))]
+        //[ForeignKey(typeof(Obligacion))]
         public int? IdObligacion { get; set; }
-        public override int GetHashCode()
-        {
-            return IdActividad;
-        }
+        
 
     }
 }

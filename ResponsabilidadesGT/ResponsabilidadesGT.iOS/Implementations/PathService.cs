@@ -18,7 +18,7 @@ namespace ResponsabilidadesGT.iOS.Implementations
                 Directory.CreateDirectory(libFolder);
             }
 
-            return Path.Combine(libFolder, "Sales.db3");
+            return Path.Combine(libFolder, "Res.db3");
         }
     }
-}
+}}

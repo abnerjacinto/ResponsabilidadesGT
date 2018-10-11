@@ -21,8 +21,14 @@ namespace ResponsabilidadesGT.ViewModels
         #region Properties
         public Obligacion Obligacion { get; set; }
 
+       
+        public List<GlosarioItemViewModel> listGlosario;
+
+        public List<Glosario> listGlosarios;
+
         public ObservableCollection<GlosarioItemViewModel> Glosarios
         {
+            
             get { return glosarios; }
             set { SetValue(ref glosarios, value); }
         }
@@ -49,7 +55,7 @@ namespace ResponsabilidadesGT.ViewModels
                 await Application.Current.MainPage.DisplayAlert(
                 "Error",
                 connection.Message,
-                "ok");
+                "Aceptar");
                 await Application.Current.MainPage.Navigation.PopAsync();
                 return;
             }
@@ -65,13 +71,14 @@ namespace ResponsabilidadesGT.ViewModels
                 await Application.Current.MainPage.DisplayAlert(
                     "Error",
                     response.Message,
-                    "ok");
+                    "Aceptar");
+                return;
             }
 
             MainViewModel.GetInstance().GlosarioList = (List<Glosario>)response.Result;
             this.Glosarios = new ObservableCollection<GlosarioItemViewModel>(
             this.ToItemGlosarioViewModel().Where(l => l.IdObligacion.Equals(this.Obligacion.IdObligacion)));
-
+            
 
 
 
@@ -103,6 +110,14 @@ namespace ResponsabilidadesGT.ViewModels
             }
         }
 
+        public ICommand UrlCommand => new Command<string>((url) =>
+        {
+            Device.OpenUri(new System.Uri($"http://{url}"));
+        });
+
+        #endregion
+        #region Methods
+
         private  async void SaveObligacion()
         {
             var result = await Application.Current.MainPage.DisplayAlert(
@@ -112,8 +127,36 @@ namespace ResponsabilidadesGT.ViewModels
                 "Cancelar"); 
             if (result == true)
             {
-                dataservice.Insert<Obligacion>(this.Obligacion);
-                dataservice.Insert<Glosario>(Glosarios);
+                var Glosario = MainViewModel.GetInstance().GlosarioList.Where(a => a.IdObligacion.Equals(this.Obligacion.IdObligacion));
+                
+                var Obli = new Obligacion();
+                Obli.IdObligacion = this.Obligacion.IdObligacion;
+                Obli.NombreObligacion = this.Obligacion.NombreObligacion;
+                Obli.EstadoObligacion = this.Obligacion.EstadoObligacion;
+                Obli.UsuarioAdicionoObligacion = this.Obligacion.UsuarioAdicionoObligacion;
+                Obli.FechaAdicionoObligacion = this.Obligacion.FechaAdicionoObligacion;
+                Obli.UsuarioModificoObligacion = this.Obligacion.UsuarioModificoObligacion;
+                Obli.FechaModificoObligacion = this.Obligacion.FechaModificoObligacion;
+                try
+                {
+                    await dataservice.Insert(Glosario.FirstOrDefault());
+                    await dataservice.Insert(Obli);
+                    await Application.Current.MainPage.DisplayAlert(
+                    "Éxito",
+                    "¡La información se cargo con éxito!",
+                    "Aceptar");
+                    return;
+                }
+                catch (Exception)
+                {
+                    await Application.Current.MainPage.DisplayAlert(
+                    "Error",
+                    "Ya se encuentra en sus actividades",
+                    "ok");
+                    return;
+                }
+                    
+                
             }
             else 
             {

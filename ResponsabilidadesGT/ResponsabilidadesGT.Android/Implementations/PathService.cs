@@ -11,7 +11,7 @@ namespace ResponsabilidadesGT.Droid.Implementations
         public string GetDatabasePath()
         {
             string path = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            return Path.Combine(path, "Responsabilidades.db3");
+            return Path.Combine(path, "Res.db3");
         }
     }
 }

@@ -1,9 +1,8 @@
 ﻿namespace ResponsabilidadesGT.Models
 {
     using Newtonsoft.Json;
-    using SQLite.Net.Attributes;
+    using SQLite;
     using SQLiteNetExtensions.Attributes;
-    using System.Collections.Generic;
 
     public class Glosario
     {
@@ -22,22 +21,19 @@
         [JsonProperty(PropertyName = "fecha_adiciono_glosario")]
         public string FechaAdicionoGlosario { get; set; }
         [JsonProperty(PropertyName = "usuario_modifico_glosario")]
-        public object UsuarioModificoGlosario { get; set; }
+        public string UsuarioModificoGlosario { get; set; }
         [JsonProperty(PropertyName = "fecha_modifico_glosario")]
-        public object fechaModificoGlosario { get; set; }
+        public string fechaModificoGlosario { get; set; }
         
         [JsonProperty(PropertyName = "id_obligacion")]
-        [ForeignKey(typeof(Obligacion))]
+        //[ForeignKey(typeof(Obligacion))]
         public int IdObligacion { get; set; }
 
         [JsonProperty(PropertyName = "id_punto_de_atencion")]
-        [ForeignKey(typeof(PuntodeAtencion))]
+        //[ForeignKey(typeof(PuntodeAtencion))]
         public int IdPuntodeAtencion { get; set; }
 
-        public override int GetHashCode()
-        {
-            return IdGlosario;
-        }
+        
 
     }
 }

@@ -107,10 +107,10 @@
                         "Ok");
                     return;
                 }
-                var Url = Application.Current.Resources["UrlAPI"].ToString();
-                var Fix = Application.Current.Resources["UrlFix"].ToString();
-                var Res = Application.Current.Resources["UrlRes"].ToString();
-                var token = await this.apiservice.GetToken("http://192.168.10.3/ResponsabilidadesAPi/public/", this.Email, this.Password);
+                var url = Application.Current.Resources["UrlAPI"].ToString();
+                var fix = Application.Current.Resources["UrlFix"].ToString();
+                var res = Application.Current.Resources["UrlRes"].ToString();
+                var token = await this.apiservice.GetToken($"{url}{fix}{res}/", this.Email, this.Password);
 
                 if (token==null)
                 {
