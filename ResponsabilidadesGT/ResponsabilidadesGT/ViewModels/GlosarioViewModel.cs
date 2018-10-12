@@ -34,8 +34,6 @@ namespace ResponsabilidadesGT.ViewModels
         }
 
         #endregion
-
-
         #region Constructor
         public GlosarioViewModel(Obligacion obligacion)
         {
@@ -109,12 +107,6 @@ namespace ResponsabilidadesGT.ViewModels
                 return new RelayCommand(SaveObligacion);
             }
         }
-
-        public ICommand UrlCommand => new Command<string>((url) =>
-        {
-            Device.OpenUri(new System.Uri($"http://{url}"));
-        });
-
         #endregion
         #region Methods
 
@@ -122,7 +114,7 @@ namespace ResponsabilidadesGT.ViewModels
         {
             var result = await Application.Current.MainPage.DisplayAlert(
                 "Guardar",
-                "Desea guardar los datos a sus Responsabilidades", 
+                "Desea guardar los datos a sus Obligaciones", 
                 "Aceptar", 
                 "Cancelar"); 
             if (result == true)
@@ -151,7 +143,7 @@ namespace ResponsabilidadesGT.ViewModels
                 {
                     await Application.Current.MainPage.DisplayAlert(
                     "Error",
-                    "Ya se encuentra en sus actividades",
+                    "Ya se encuentra en sus Obligaciones",
                     "ok");
                     return;
                 }

@@ -7,6 +7,8 @@ namespace ResponsabilidadesGT.ViewModels
     using System.Windows.Input;
     using Xamarin.Forms;
     using Views;
+    using Interfaces;
+    using ResponsabilidadesGT.Services;
 
     public class ObligacionItemViewModel: Obligacion
     {
@@ -23,6 +25,23 @@ namespace ResponsabilidadesGT.ViewModels
         {
             MainViewModel.GetInstance().Glosario = new GlosarioViewModel(this);
             await App.Navigator.PushAsync(new GlosarioPage());
+        }
+
+        public ICommand SelectPrefencesCommand
+        {
+            get
+            {
+                return new RelayCommand(LoadPreferences);
+            }
+        }
+
+        private async void LoadPreferences()
+        {
+            MainViewModel.GetInstance().Preferencia = new PreferenciaViewModel();
+            await App.Navigator.PushAsync(new PreferenciaPage(),true);
+            NotificationService Noty = new NotificationService();
+            Noty.Show("Test", "This is a test notification from the future.", 0, DateTime.Now.AddSeconds(10),true,true);
+           
         }
         #endregion
     }

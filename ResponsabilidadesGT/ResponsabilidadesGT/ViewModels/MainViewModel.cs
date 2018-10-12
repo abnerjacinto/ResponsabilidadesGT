@@ -6,10 +6,15 @@ namespace ResponsabilidadesGT.ViewModels
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using Models;
+    using ResponsabilidadesGT.Services;
+
     class MainViewModel
     {
+        #region Service
+        private DataService dataService;
+        #endregion
         #region Properties
-       
+
         public List<Obligacion> ObligacionesList
         {
             get;
@@ -40,16 +45,19 @@ namespace ResponsabilidadesGT.ViewModels
         public GlosarioViewModel Glosario { get; set; }
         public PuntoAtencionViewModel PuntoAtencion { get; set; }
         public PrincipalViewModel Principal { get; set; }
-        
+        public PreferenciaViewModel Preferencia { get; set; }
+
         #endregion
         #region Constructor
         public MainViewModel()
         {
             instance = this;
-            //this.Principal = new PrincipalViewModel();
+            this.dataService = new DataService();
             this.Login = new LoginViewModel();
+            
             this.LoadMenu();
-          
+            this.Principal = new PrincipalViewModel();
+
         }
 
         
@@ -72,7 +80,7 @@ namespace ResponsabilidadesGT.ViewModels
             this.Menus.Add(new MenuItemViewModel
             {
                 Icon = "ic_insert_invitation",
-                Title = "Responsabilidades en Linea",
+                Title = "Obligaciones en Linea",
                 PageName = "ResponsabilidadesPage",
             });
 

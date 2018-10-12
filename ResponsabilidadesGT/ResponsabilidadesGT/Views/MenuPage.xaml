@@ -4,14 +4,14 @@
              x:Class="ResponsabilidadesGT.Views.MenuPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              Title="Menú"
-             BackgroundColor="Navy"
+             BackgroundColor="{StaticResource DarkBackgroundColor}"
     Icon="ic_action_menu">
     <ContentPage.Content>
         <StackLayout
             Padding="5,20,5,5">
             <Image
                 Source="Responsabilidades"
-                WidthRequest="150">
+                WidthRequest="100">
                 
             </Image>
             <Label

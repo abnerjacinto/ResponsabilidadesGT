@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ResponsabilidadesGT.Views.PrincipalPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             Title="Mis Responsabilidades">
+             Title="Mis Obligaciones">
     <ContentPage.Content>
         <StackLayout
             BindingContext="{Binding Principal}">
@@ -18,29 +18,28 @@
                 HasUnevenRows="true" 
                 IsPullToRefreshEnabled="true"
                 IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
-                ItemsSource="{Binding ObligacionesLocal}"
+                ItemsSource="{Binding Principales}"
                 SeparatorVisibility="None"
                 RefreshCommand="{Binding RefreshCommand}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <Frame
-                                BackgroundColor="AliceBlue"
+                                BackgroundColor="{StaticResource LightBackgroundColor}"
                                 CornerRadius="20"
                                 HasShadow="true"
                                 Margin="5">
-                                <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding SelectObligacionCommand}"/>
-                                </Frame.GestureRecognizers>
+                                
                                 <Grid>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="auto"/>
                                         <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
 
                                     <StackLayout 
-                                        Grid.Column="1"
+                                        Grid.Column="0"
                                         VerticalOptions="Center">
                                         <Label 
                                             Text="{Binding IdObligacion}"
@@ -52,12 +51,37 @@
                                             Text="{Binding NombreObligacion}"
                                             TextColor="Black">
                                         </Label>
+
+                                        <Label 
+                                            Grid.Column="0"
+                                            Text="Preferencias"
+                                            FontSize="Small"
+                                            TextColor="Purple"
+                                            HorizontalOptions="Start"
+                                            VerticalOptions="Center">
+                                        </Label>
+                                        
                                     </StackLayout>
                                     <Image 
-                                        Grid.Column="2"
+                                            Grid.Column="2"
+                                            Grid.Row="1"
+                                            HorizontalOptions="End" 
+                                            VerticalOptions="Center"
+                                            Source="ic_settings">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding SelectPrefencesCommand}"/>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                    <Image 
+                                        Grid.Column="3"
                                         HorizontalOptions="End" 
                                         Source="ic_chevron_right">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding SelectObligacionCommand}"/>
+                                        </Image.GestureRecognizers>
                                     </Image>
+                                    
+                                    
                                 </Grid>
                             </Frame>
                         </ViewCell>

@@ -12,7 +12,7 @@
                     FontSize="Large"
                     FontAttributes="Bold"
                     HorizontalOptions="Center"
-                    Text="tes"
+                    Text="Detalle"
                     TextColor="Black">
                 </Label>
                 <ListView 

@@ -12,7 +12,7 @@
                 <Image 
                     Aspect="AspectFit"
                     Source="logo"
-                    WidthRequest="250"/>
+                    WidthRequest="200"/>
                 <Grid Margin="10,0">
 
                     <Grid.ColumnDefinitions>
@@ -22,7 +22,7 @@
                     <Image 
                         Grid.Row="0"
                         Grid.Column="0"
-                        Source="iconEmail"
+                        Source="iconUsername"
                         HeightRequest="30" 
                         VerticalOptions="Center"
                     />
@@ -30,13 +30,13 @@
                         Grid.Row="0"
                         Grid.Column="1"
                         Keyboard="Email"
-                        Placeholder="Ingrese Correo"
+                        Placeholder="Ingrese usuario"
                         Text="{Binding Email,Mode=TwoWay}">
                     </Entry>
                     <Image 
                         Grid.Row="1"
                         Grid.Column="0"
-                        Source="iconUsername"
+                        Source="iconPassword"
                         HeightRequest="30" 
                         VerticalOptions="Center"
                     />
