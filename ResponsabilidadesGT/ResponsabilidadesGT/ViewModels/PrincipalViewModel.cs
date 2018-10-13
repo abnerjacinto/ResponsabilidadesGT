@@ -85,7 +85,7 @@
 
 
         }
-        private void Search()
+        public void Search()
         {
             if (string.IsNullOrEmpty(this.Filter))
             {

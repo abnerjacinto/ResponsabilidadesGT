@@ -133,19 +133,19 @@
         }
         public async Task DeleteAllObligacion()
         {
-            var query = await this.connection.QueryAsync<Glosario>("delete from [Obligacion]");
+            var query = await this.connection.QueryAsync<Obligacion>("delete from [Obligacion]");
         }
         public async Task DeleteAllActividad()
         {
-            var query = await this.connection.QueryAsync<Glosario>("delete from [Actividad]");
+            var query = await this.connection.QueryAsync<Actividad>("delete from [Actividad]");
         }
         public async Task DeleteAllPuntoAtencion()
         {
-            var query = await this.connection.QueryAsync<Glosario>("delete from [PuntodeAtencion]");
+            var query = await this.connection.QueryAsync<PuntodeAtencion>("delete from [PuntodeAtencion]");
         }
         public async Task DeleteAllUsuario()
         {
-            var query = await this.connection.QueryAsync<Glosario>("delete from [Usuario]");
+            var query = await this.connection.QueryAsync<Usuario>("delete from [Usuario]");
         }
     }
 }

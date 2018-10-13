@@ -12,7 +12,6 @@
             <Image
                 Source="Responsabilidades"
                 WidthRequest="100">
-                
             </Image>
             <Label
                 FontSize="Large"
@@ -22,7 +21,7 @@
                 TextColor="White">
             </Label>
             <ListView 
-                BackgroundColor="Navy"
+                BackgroundColor="{StaticResource DarkBackgroundColor}"
                 ItemsSource="{Binding Menus}"
                 HasUnevenRows="True"
                 SeparatorVisibility="None">

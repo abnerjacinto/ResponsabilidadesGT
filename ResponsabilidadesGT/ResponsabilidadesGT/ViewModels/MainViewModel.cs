@@ -5,7 +5,10 @@ namespace ResponsabilidadesGT.ViewModels
     using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
+    using System.Windows.Input;
+    using GalaSoft.MvvmLight.Command;
     using Models;
+    using ObligacionesGT.Views;
     using ResponsabilidadesGT.Services;
 
     class MainViewModel
@@ -97,6 +100,21 @@ namespace ResponsabilidadesGT.ViewModels
                 Title = "Salir",
                 PageName = "LoginPage",
             });
+        }
+        #endregion
+        #region ICommand
+        public ICommand AddObligacionCommand
+        {
+            get
+            {
+                return new RelayCommand(AddObligacion);
+            }
+        }
+
+        private async void AddObligacion()
+        {
+            //MainViewModel.GetInstance().PuntoAtencion = new PuntoAtencionViewModel(this);
+            await App.Navigator.PushAsync(new AddObligacionPage());
         }
         #endregion
     }

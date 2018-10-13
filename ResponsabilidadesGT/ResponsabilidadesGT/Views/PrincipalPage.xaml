@@ -4,6 +4,9 @@
              x:Class="ResponsabilidadesGT.Views.PrincipalPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              Title="Mis Obligaciones">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="ic_action_add_circle"  Command="{Binding AddObligacionCommand}"/>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout
             BindingContext="{Binding Principal}">
@@ -29,59 +32,69 @@
                                 CornerRadius="20"
                                 HasShadow="true"
                                 Margin="5">
-                                
-                                <Grid>
+                                <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding SelectObligacionCommand}"/>                                        
+                                </Frame.GestureRecognizers>
+                                <Grid
+                                    RowSpacing="0">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="auto"/>
                                         <ColumnDefinition Width="auto"/>
                                         <ColumnDefinition Width="auto"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-
                                     <StackLayout 
-                                        Grid.Column="0"
-                                        VerticalOptions="Center">
-                                        <Label 
-                                            Text="{Binding IdObligacion}"
-                                            TextColor="Black">
-                                        </Label>
+                                        Grid.Column="1"
+                                        VerticalOptions="Center">                                        
                                         <Label
                                             FontAttributes="Bold"
+                                            VerticalOptions="Start"
                                             FontSize="Medium"
                                             Text="{Binding NombreObligacion}"
                                             TextColor="Black">
-                                        </Label>
-
-                                        <Label 
-                                            Grid.Column="0"
-                                            Text="Preferencias"
-                                            FontSize="Small"
-                                            TextColor="Purple"
-                                            HorizontalOptions="Start"
-                                            VerticalOptions="Center">
-                                        </Label>
-                                        
-                                    </StackLayout>
+                                        </Label>   
+                                    </StackLayout>                                   
                                     <Image 
-                                            Grid.Column="2"
-                                            Grid.Row="1"
-                                            HorizontalOptions="End" 
-                                            VerticalOptions="Center"
-                                            Source="ic_settings">
+                                        Grid.Column="0"
+                                        Grid.Row="1"
+                                        HorizontalOptions="Start" 
+                                        Source="ic_cal">
                                         <Image.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding SelectPrefencesCommand}"/>
                                         </Image.GestureRecognizers>
                                     </Image>
+                                    <Label 
+                                            Grid.Column="1"
+                                            Grid.Row="1"
+                                            Text="Preferencias"
+                                            FontSize="Micro"
+                                            TextColor="black"
+                                            HorizontalOptions="Start"
+                                            VerticalOptions="Center">
+                                    </Label>
+                                    <Image 
+                                        Grid.Column="2"
+                                        Grid.Row="1"
+                                        HorizontalOptions="Start" 
+                                        Source="ic_del">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding DeleteObligacionCommand}"/>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                    <Label 
+                                            Grid.Column="3"
+                                            Grid.Row="1"
+                                            Text="Eliminar"
+                                            FontSize="Micro"
+                                            TextColor="Black"
+                                            HorizontalOptions="Start"
+                                            VerticalOptions="Center">
+                                    </Label>
                                     <Image 
                                         Grid.Column="3"
                                         HorizontalOptions="End" 
-                                        Source="ic_chevron_right">
-                                        <Image.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding SelectObligacionCommand}"/>
-                                        </Image.GestureRecognizers>
-                                    </Image>
-                                    
-                                    
+                                        Source="ic_chevron_right">                                        
+                                    </Image>                                   
                                 </Grid>
                             </Frame>
                         </ViewCell>

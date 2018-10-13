@@ -137,13 +137,15 @@ namespace ResponsabilidadesGT.ViewModels
                     "Éxito",
                     "¡La información se cargo con éxito!",
                     "Aceptar");
+                    MainViewModel.GetInstance().Principal = new PrincipalViewModel();
+                   
                     return;
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
                     await Application.Current.MainPage.DisplayAlert(
                     "Error",
-                    "Ya se encuentra en sus Obligaciones",
+                    e.Message,
                     "ok");
                     return;
                 }

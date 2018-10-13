@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
+using Syncfusion.SfPicker.XForms.iOS;
 using UIKit;
 using UserNotifications;
 
@@ -24,6 +25,7 @@ namespace ResponsabilidadesGT.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+            SfPickerRenderer.Init();
             LoadApplication(new App());
             if (UIDevice.CurrentDevice.CheckSystemVersion(10, 0))
             {
