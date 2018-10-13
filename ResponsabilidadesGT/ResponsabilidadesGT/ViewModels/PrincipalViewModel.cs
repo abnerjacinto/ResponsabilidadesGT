@@ -71,8 +71,7 @@
             {
                 this.IsRefreshing = true;
                 this.Obligacions = await dataService.GetAllObligacion();
-                this.Principales = new ObservableCollection<ObligacionItemViewModel>(
-                this.ToItemObligacionViewModel());
+                this.Principales = new ObservableCollection<ObligacionItemViewModel>(this.ToItemObligacionViewModel());
                 this.IsRefreshing = false;
             }
             catch (Exception)

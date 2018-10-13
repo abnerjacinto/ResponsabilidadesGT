@@ -59,7 +59,7 @@ namespace ResponsabilidadesGT.ViewModels
             this.Login = new LoginViewModel();
             
             this.LoadMenu();
-            this.Principal = new PrincipalViewModel();
+            //this.Principal = new PrincipalViewModel();
 
         }
 

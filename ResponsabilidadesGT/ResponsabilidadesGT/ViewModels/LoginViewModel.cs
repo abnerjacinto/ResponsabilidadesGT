@@ -144,6 +144,7 @@
                 }
 
                 //mainViewModel.Responsabilidades = new ResponsabilidadesViewModel();
+                MainViewModel.GetInstance().Principal = new PrincipalViewModel();
                 Application.Current.MainPage=new MasterPage();
 
                 this.IsEnabled = true;

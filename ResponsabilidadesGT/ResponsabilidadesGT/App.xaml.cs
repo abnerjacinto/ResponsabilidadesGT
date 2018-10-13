@@ -30,6 +30,7 @@
                 var mainViewModel = MainViewModel.GetInstance();
                 mainViewModel.Token = Settings.Token;
                 mainViewModel.TokenType = Settings.TokenType;
+                MainViewModel.GetInstance().Principal = new PrincipalViewModel();
                 this.MainPage = new MasterPage();
             }
             

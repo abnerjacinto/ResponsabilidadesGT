@@ -133,11 +133,12 @@ namespace ResponsabilidadesGT.ViewModels
                 {
                     await dataservice.Insert(Glosario.FirstOrDefault());
                     await dataservice.Insert(Obli);
+                    MainViewModel.GetInstance().Principal = new PrincipalViewModel();
                     await Application.Current.MainPage.DisplayAlert(
                     "Éxito",
                     "¡La información se cargo con éxito!",
                     "Aceptar");
-                    MainViewModel.GetInstance().Principal = new PrincipalViewModel();
+                    
                    
                     return;
                 }

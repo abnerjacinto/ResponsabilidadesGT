@@ -19,8 +19,8 @@
                 <Setter Property="BarTextColor" Value="White" />
             </Style>
             <infra:InstanceLocator x:Key="Locator"/>
-            <x:String x:Key="UrlAPI">http://192.168.10.3</x:String>
-            <x:String x:Key="UrlFix">/ResponsabilidadesAPi</x:String>
+            <x:String x:Key="UrlAPI">http://192.168.0.104</x:String>
+            <x:String x:Key="UrlFix">/Responsabilidades</x:String>
             <x:String x:Key="UrlRes">/public</x:String>
         </ResourceDictionary>
      </Application.Resources>

@@ -67,7 +67,7 @@
             var Res = Application.Current.Resources["UrlRes"].ToString();
             var response = await this.apiservice.GetList<Obligacion>(url,
                 Fix,
-                $"{Res}/getobligacion");
+                $"{Res}/getobligaciones");
             if (!response.IsSuccess)
             {
                 this.IsRefreshing = false;
