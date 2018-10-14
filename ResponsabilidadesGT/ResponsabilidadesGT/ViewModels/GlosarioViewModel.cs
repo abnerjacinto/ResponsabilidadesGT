@@ -62,7 +62,7 @@ namespace ResponsabilidadesGT.ViewModels
             var Res = Application.Current.Resources["UrlRes"].ToString();
             var response = await this.apiservice.GetList<Glosario>(url,
                     Fix,
-                   $"{Res}/getglosario");
+                   $"{Res}/getglosario/2");
             if (!response.IsSuccess)
             {
 
@@ -87,14 +87,12 @@ namespace ResponsabilidadesGT.ViewModels
             {
                 IdGlosario = g.IdGlosario,
                 IdObligacion = g.IdObligacion,
-                IdPuntodeAtencion = g.IdPuntodeAtencion,
+                NombreObligacion=g.NombreObligacion,
                 Descripcion = g.Descripcion,
                 FechaLimite = g.FechaLimite,
-                Link = g.Link,
-                UsuarioModificoGlosario = g.UsuarioModificoGlosario,
-                fechaModificoGlosario = g.fechaModificoGlosario,
-                UsuarioAdicionoGlosario = g.UsuarioAdicionoGlosario,
-                FechaAdicionoGlosario = g.FechaAdicionoGlosario
+                EstadoObligacion=g.EstadoObligacion,
+
+               
 
             });
         }
@@ -138,6 +136,7 @@ namespace ResponsabilidadesGT.ViewModels
                     "Éxito",
                     "¡La información se cargo con éxito!",
                     "Aceptar");
+                    await dataservice.dbClose();
                     
                    
                     return;

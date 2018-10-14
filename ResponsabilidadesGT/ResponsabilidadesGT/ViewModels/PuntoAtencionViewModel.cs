@@ -52,7 +52,7 @@
             var Res = Application.Current.Resources["UrlRes"].ToString();
             var response = await this.apiservice.GetList<PuntodeAtencion>(url,
                     Fix,
-                   $"{Res}/getpuntoatencion");
+                   $"{Res}/getpuntoatencion/2");
             if (!response.IsSuccess)
             {
 
@@ -64,7 +64,7 @@
             }
             MainViewModel.GetInstance().PuntoList = (List<PuntodeAtencion>)response.Result; 
             this.PuntodeAtencion = new ObservableCollection<PuntoAtencionItemViewModel>(
-            this.ToItemGlosarioViewModel().Where(p => p.IdPuntodeAtencion.Equals(this.Glosario.IdPuntodeAtencion)));
+            this.ToItemGlosarioViewModel().Where(p => p.IdGlosario.Equals(this.Glosario.IdGlosario)));
 
         }
 
@@ -73,14 +73,11 @@
             return MainViewModel.GetInstance().PuntoList.Select(p => new PuntoAtencionItemViewModel
             {
                 IdPuntodeAtencion = p.IdPuntodeAtencion,
-                Institucion = p.Institucion,
+                IdGlosario=p.IdGlosario,
+                NombreInstitucion = p.NombreInstitucion,
                 Direccion = p.Direccion,
                 Telefono = p.Telefono,
-                UsuarioAdicionoPunto = p.UsuarioAdicionoPunto,
-                FechaAdicionoPunto = p.FechaAdicionoPunto,
-                UsuarioModificoPunto = p.UsuarioModificoPunto,
-                FechaModificoPunto = p.FechaModificoPunto,
-
+                
             });
         }
         #endregion

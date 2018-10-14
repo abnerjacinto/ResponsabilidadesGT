@@ -69,15 +69,15 @@ namespace ResponsabilidadesGT.ViewModels
             obligacion.UsuarioModificoObligacion = this.UsuarioModificoObligacion;
             obligacion.FechaModificoObligacion = this.FechaModificoObligacion;
             var result = await Application.Current.MainPage.DisplayAlert(
-                "Guardar",
-                "Desea guardar los datos a sus Obligaciones",
+                "Eliminar",
+                "Desea eliminar los datos de su Obligación",
                 "Aceptar",
                 "Cancelar");
             if (result == true)
             {
                 this.dataservice = new DataService();
                 await dataservice.Delete(obligacion);
-                
+                await dataservice.dbClose();
             }
                 
         }

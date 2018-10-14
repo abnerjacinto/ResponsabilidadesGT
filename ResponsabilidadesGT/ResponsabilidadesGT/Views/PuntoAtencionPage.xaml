@@ -43,7 +43,7 @@
                                             <Label
                                                 FontAttributes="Bold"
                                                 FontSize="Medium"
-                                                Text="{Binding Institucion}"
+                                                Text="{Binding NombreInstitucion}"
                                                 TextColor="Black">
                                             </Label>
                                             <Label 

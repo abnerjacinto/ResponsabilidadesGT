@@ -65,13 +65,13 @@
                                             TextColor="Black">
                                             </Label>
                                             <Label 
-                                            Text="Más información:"
+                                            Text="Ciclo:"
                                             TextColor="Black">
                                             </Label>
                                             <Label
                                             FontAttributes="Bold"
                                             FontSize="Medium"
-                                            Text="{Binding Link}"
+                                            Text="{Binding Ciclo}"
                                             TextColor="Blue">
                                                 <Label.GestureRecognizers>
                                                     <TapGestureRecognizer Command="{Binding UrlCommand}"

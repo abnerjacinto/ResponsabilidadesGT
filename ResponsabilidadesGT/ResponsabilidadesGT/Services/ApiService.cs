@@ -55,7 +55,7 @@ namespace ResponsabilidadesGT.Services
                 client.BaseAddress = new Uri(urlBase);
                 var response = await client.PostAsync("login",
                     new StringContent(string.Format(
-                    "txtName={0}&txtPwd={1}",
+                    "email={0}&password={1}&slctipousuario=2",
                     username, password),
                     Encoding.UTF8, "application/x-www-form-urlencoded"));
                 var resultJSON = await response.Content.ReadAsStringAsync();
@@ -327,6 +327,53 @@ namespace ResponsabilidadesGT.Services
 
                 var result = await response.Content.ReadAsStringAsync();
                 var newRecord = JsonConvert.DeserializeObject<T>(result);
+
+                return new Response
+                {
+                    IsSuccess = true,
+                    Message = "Record added OK",
+                    Result = newRecord,
+                };
+            }
+            catch (Exception ex)
+            {
+                return new Response
+                {
+                    IsSuccess = false,
+                    Message = ex.Message,
+                };
+            }
+        }
+
+        public async Task<Response> PostCreateUser(
+            string urlBase,
+            string servicePrefix,
+            string controller,
+            string Content)
+        {
+            try
+            {
+                
+                var content = new StringContent(
+                    Content,
+                    Encoding.UTF8,
+                    "application/json");
+                var client = new HttpClient();
+                client.BaseAddress = new Uri(urlBase);
+                var url = string.Format("{0}{1}", servicePrefix, controller);
+                var response = await client.PostAsync(url, content);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return new Response
+                    {
+                        IsSuccess = false,
+                        Message = response.StatusCode.ToString(),
+                    };
+                }
+
+                var result = await response.Content.ReadAsStringAsync();
+                var newRecord = JsonConvert.DeserializeObject(result);
 
                 return new Response
                 {

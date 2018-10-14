@@ -9,7 +9,7 @@
     {
         #region Properties
         [JsonProperty(PropertyName = "id_obligacion")]
-        [PrimaryKey]
+        [PrimaryKey, Unique]
         public int IdObligacion { get; set; }
         [JsonProperty(PropertyName = "nombre_obligacion")]
         public string NombreObligacion { get; set; }

@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight.Command;
+using ResponsabilidadesGT.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,10 +11,12 @@ namespace ResponsabilidadesGT.ViewModels
 {
     public class RegisterViewModel:BaseViewModel
     {
+        #region Service
+        private ApiService apiservice;
+        #endregion
         #region attributes
         private string name;
         private string email;
-        private string rEmail;
         private string password;
         private string rPassword;
         private bool isRunning;
@@ -35,11 +38,7 @@ namespace ResponsabilidadesGT.ViewModels
             get { return email; }
             set { SetValue(ref email, value); }
         }
-        public string REmail
-        {
-            get { return rEmail; }
-            set { SetValue(ref rEmail, value); }
-        }
+        
         public string Password
         {
             get { return password; }
@@ -57,7 +56,11 @@ namespace ResponsabilidadesGT.ViewModels
         }
         #endregion
         #region Constructor
-
+        public RegisterViewModel()
+        {
+            this.apiservice = new ApiService();
+            
+        }
         #endregion
         #region Cammand
         public ICommand RegisterCommand
@@ -67,13 +70,45 @@ namespace ResponsabilidadesGT.ViewModels
                 return new RelayCommand(Register);
             }
         }
+
         private async void Register()
+        {
+            Validacion();
+            var connection = await this.apiservice.CheckConnection();
+            if (!connection.IsSuccess)
+            {
+               await Application.Current.MainPage.DisplayAlert(
+                    "Error",
+                    connection.Message,
+                    "ok");
+                return;
+            }
+            var url = Application.Current.Resources["UrlAPI"].ToString();
+            var Fix = Application.Current.Resources["UrlFix"].ToString();
+            var Res = Application.Current.Resources["UrlRes"].ToString();
+            var response = await this.apiservice.PostCreateUser(url,
+                Fix,
+                $"{Res}/crearusuario",
+                $"name={this.Name}&email={this.Email}&password={this.Password}&confirmarpassword={this.RPassword}&usuarioadiciono={this.Name}&slctipousuario{2}");
+            if (!response.IsSuccess)
+            {
+                
+                await Application.Current.MainPage.DisplayAlert(
+                    "Error",
+                    response.Message,
+                    "ok");
+                return;
+            }
+
+        }
+
+        private async void Validacion()
         {
             if (string.IsNullOrEmpty(this.Name))
             {
                 await Application.Current.MainPage.DisplayAlert(
                     "Error",
-                    "El nombre es obligatorio",
+                    "Usuario obligatorio",
                     "Aceptar");
                 return;
             }
@@ -102,30 +137,7 @@ namespace ResponsabilidadesGT.ViewModels
                     return;
                 }
             }
-            if (string.IsNullOrEmpty(this.REmail))
-            {
-                await Application.Current.MainPage.DisplayAlert(
-                    "Error",
-                    "Ingrese nuevamente su correo",
-                    "Aceptar");
-                return;
-            }
-            else
-            {
-                bool isEmail = Regex.IsMatch(
-                    this.REmail,
-                    @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z",
-                    RegexOptions.IgnoreCase);
-                if (!isEmail)
-                {
-                    await Application.Current.MainPage.DisplayAlert(
-                        "Advertencia",
-                        "El formato del correo electrónico es incorrecto, revíselo e intente de nuevo.",
-                        "Aceptar");
-                    this.REmail = string.Empty;
-                    return;
-                }
-            }
+            
             if (string.IsNullOrEmpty(this.Password))
             {
                 await Application.Current.MainPage.DisplayAlert(
@@ -143,26 +155,18 @@ namespace ResponsabilidadesGT.ViewModels
                     "Aceptar");
                 return;
             }
-            if (this.Email!=this.REmail)
-            {
-                await Application.Current.MainPage.DisplayAlert(
-                    "Error",
-                    "El correo debe ser el mismo.",
-                    "Aceptar");
-                this.Email = string.Empty;
-                this.REmail = string.Empty;
-                return;
-            }
+            
             if (this.Password != this.RPassword)
             {
                 await Application.Current.MainPage.DisplayAlert(
                     "Error",
                     "La contraseña debe ser el mismo.",
                     "Aceptar");
-                this.Email = string.Empty;
-                this.REmail = string.Empty;
+                this.Password= string.Empty;
+                this.RPassword = string.Empty;
                 return;
             }
+
 
         }
         #endregion

@@ -5,7 +5,7 @@
 
     public class Actividad
     {
-        [PrimaryKey]
+        [PrimaryKey,Unique]
         public int IdActividad { get; set; }
         public string FechaAviso { get; set; }
         public string Prorroga { get; set; }

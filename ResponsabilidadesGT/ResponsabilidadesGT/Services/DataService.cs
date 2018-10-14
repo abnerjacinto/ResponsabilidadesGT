@@ -26,6 +26,7 @@
             await connection.CreateTableAsync<Obligacion>().ConfigureAwait(false);
             await connection.CreateTableAsync<PuntodeAtencion>().ConfigureAwait(false);
             await connection.CreateTableAsync<Usuario>().ConfigureAwait(false);
+            
         }
 
         public async Task Insert<T>(T model)
@@ -61,15 +62,13 @@
             {
             
                 IdGlosario=g.IdGlosario,
+                NombreObligacion=g.NombreObligacion,
                 Descripcion=g.Descripcion,
                 FechaLimite=g.FechaLimite,
-                Link=g.Link,
-                UsuarioAdicionoGlosario=g.UsuarioAdicionoGlosario,
-                FechaAdicionoGlosario=g.FechaAdicionoGlosario,
-                UsuarioModificoGlosario=g.UsuarioModificoGlosario,
-                fechaModificoGlosario=g.fechaModificoGlosario,
+                EstadoObligacion=g.EstadoObligacion,
+                Ciclo=g.Ciclo,
                 IdObligacion=g.IdGlosario,
-                IdPuntodeAtencion=g.IdPuntodeAtencion,
+               
             }).ToList();
             return list;
         }
@@ -116,13 +115,11 @@
             var list = array.Select(p => new PuntodeAtencion
             {
                 IdPuntodeAtencion=p.IdPuntodeAtencion,
-                Institucion=p.Institucion,
+                IdGlosario=p.IdGlosario,
+                NombreInstitucion=p.NombreInstitucion,
                 Direccion=p.Direccion,
                 Telefono=p.Telefono,
-                UsuarioAdicionoPunto=p.UsuarioAdicionoPunto,
-                FechaAdicionoPunto=p.FechaAdicionoPunto,
-                UsuarioModificoPunto=p.UsuarioModificoPunto,
-                FechaModificoPunto=p.FechaModificoPunto,
+               
             }).ToList();
             return list;
         }
@@ -146,6 +143,10 @@
         public async Task DeleteAllUsuario()
         {
             var query = await this.connection.QueryAsync<Usuario>("delete from [Usuario]");
+        }
+        public async Task dbClose()
+        {
+            await connection.CloseAsync();
         }
     }
 }
