@@ -28,10 +28,11 @@
                     <DataTemplate>
                         <ViewCell>
                             <Frame
-                                BackgroundColor="{StaticResource LightBackgroundColor}"
+                                BackgroundColor="{StaticResource icons}"
                                 CornerRadius="20"
                                 HasShadow="true"
-                                Margin="5">
+                                Margin="2"
+                                BorderColor="{StaticResource divider}">
                                 <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding SelectObligacionCommand}"/>                                        
                                 </Frame.GestureRecognizers>

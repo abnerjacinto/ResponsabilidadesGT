@@ -56,27 +56,22 @@
                     Orientation="Horizontal">
                     <Label
                         HorizontalOptions="StartAndExpand"
-                        Text="Recordad Contraseña"
+                        Text="Recordar Contraseña"
                         VerticalOptions="Center">
                     </Label>
                     <Switch
                         IsToggled="{Binding IsRemember,Mode=TwoWay}"
-                        HorizontalOptions="End">
+                        HorizontalOptions="End"                
+                        >
                     </Switch>
                 </StackLayout>
-                
-                <Label
-                    Text="¿Has olvidado tu contraseña?"
-                    TextColor="SkyBlue"
-                    HorizontalOptions="Center">
-
-                </Label>
+                                
                 <StackLayout
                     Margin="30,0"
                     Orientation="Horizontal">
                     <Button 
                         Text="Ingresar"
-                        BackgroundColor="SkyBlue"
+                        BackgroundColor="{StaticResource PrimaryDark}"
                         HeightRequest="46"    
                         TextColor="White"
                         BorderRadius="23"
@@ -87,7 +82,7 @@
                     <Button 
                         Text="Registrarse"
                         HeightRequest="46"
-                        BackgroundColor="MediumPurple"
+                        BackgroundColor="{StaticResource Primary}"
                         TextColor="White"
                         BorderRadius="23"
                         HorizontalOptions="FillAndExpand"
@@ -95,20 +90,37 @@
                         IsEnabled="{Binding IsEnabled,Mode=TwoWay}">>
                     </Button>
                 </StackLayout>
+                <Label
+                    Text="¿Has olvidado tu contraseña?"
+                    TextColor="SkyBlue"
+                    HorizontalOptions="Center">
+
+                </Label>
                 <StackLayout
                     Orientation="Horizontal"
                     HorizontalOptions="Center">
                     <Image 
-                        HeightRequest="100"
-                        Source="iconFacebook"/>
+                        HeightRequest="60"
+                        Source="iconFacebook">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LoginFacebookCommand}"/>
+                        </Image.GestureRecognizers>
+                    </Image>
                     <Image 
-                        HeightRequest="100"
-                        Source="iconTwitter"/>
+                        HeightRequest="60"
+                        Source="iconTwitter">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding LoginTwitterCommand}"/>
+                    </Image.GestureRecognizers>
+                    </Image>
                     <Image 
-                        HeightRequest="100"
-                        Source="iconInstagram"/>
-                    
-                    
+                        HeightRequest="60"
+                        Source="iconInstagram">
+
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding LoginInstagramCommand}"/>
+                    </Image.GestureRecognizers>
+                    </Image>
                 </StackLayout>
 
             </StackLayout>

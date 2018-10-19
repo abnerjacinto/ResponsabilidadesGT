@@ -17,7 +17,8 @@
         [JsonProperty(PropertyName = "direccion")]
         public string Direccion { get; set; }
         [JsonProperty(PropertyName = "telefono")]
-        public int Telefono { get; set; }
-        
+        public string Telefono { get; set; }
+        [JsonProperty(PropertyName = "link")]
+        public string Link { get; set; }
     }
 }

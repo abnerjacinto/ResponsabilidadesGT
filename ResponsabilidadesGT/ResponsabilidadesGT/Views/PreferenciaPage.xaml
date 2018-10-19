@@ -11,53 +11,65 @@
                 <Image 
                     Aspect="AspectFit"
                     Source="logo"
-                    WidthRequest="200"/>
-                <Grid Margin="5,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="2*"/>
-                    </Grid.ColumnDefinitions>
-                    <Label 
-                        Grid.Row="0"
-                        Grid.Column="0"
-                        Text="Ingrese Fecha de Aviso:" 
-                        VerticalOptions="Center"
-                    />
-                    <Entry
-                        Grid.Row="0"
-                        Grid.Column="1"
-                        Keyboard="Text"
-                        Placeholder="Ingrese Fecha de aviso."
-                        Text="{Binding Prorroga,Mode=TwoWay}">
-                    </Entry>
-                    <Label 
-                        Grid.Row="1"
-                        Grid.Column="0"
+                    WidthRequest="200"
+                 />
+                
+                <Label 
+                    HorizontalOptions="CenterAndExpand"
+                    Text="Ingrese Fecha de Aviso:" 
+                    VerticalOptions="CenterAndExpand"
+                 />
+                <DatePicker 
+                    VerticalOptions="CenterAndExpand" 
+                    HorizontalOptions="CenterAndExpand"
+                    HeightRequest="50"
+                    x:Name="FechaNotificacion"
+                    Date="{Binding FechaSelect}">
+                    
+                </DatePicker>
+                <Label
+                    HorizontalOptions="CenterAndExpand"
+                    Text="Ingrese Hora:" 
+                    VerticalOptions="Center"
+
+                 />
+                <TimePicker 
+                    VerticalOptions="CenterAndExpand" 
+                    HorizontalOptions="CenterAndExpand"
+                    HeightRequest="50"
+                    x:Name="timePicker"
+                    Time="{Binding TimeSelect}">
+                    </TimePicker>
+                    <Label
+                        HorizontalOptions="CenterAndExpand"
                         Text="Prorroga:" 
                         VerticalOptions="Center"
                     />
                     <Entry
-                        Grid.Row="1"
-                        Grid.Column="1"
+                        HorizontalOptions="CenterAndExpand"
+                        HeightRequest="43"
                         Keyboard="Text"
                         Placeholder="Ingrese número de días de prorroga."
                         Text="{Binding Prorroga,Mode=TwoWay}">
                     </Entry>
-                    <Label 
-                        Grid.Row="2"
-                        Grid.Column="0"
+                <StackLayout
+                    Orientation="Horizontal"
+                    Padding="10">
+                    <Label
+                        HorizontalOptions="CenterAndExpand"
                         Text="Estado de la Obligación:" 
                         VerticalOptions="Center"
                     />
-                    <Entry
-                        Grid.Row="2"
-                        Grid.Column="1"
-                        Keyboard="Text"
-                        Placeholder="Ingrese Estado"
-                        Text="{Binding Prorroga,Mode=TwoWay}">
-                    </Entry>
+                    <Switch
+                        IsToggled="{Binding IsRemember,Mode=TwoWay}"
+                        HorizontalOptions="End"                
+                        >
+                    </Switch>
+                </StackLayout>
+                    
+                
                    
-                </Grid>
+                
                 <ActivityIndicator
                     IsRunning="{Binding IsRunning,Mode=TwoWay}">
                 </ActivityIndicator>

@@ -52,8 +52,9 @@ namespace ResponsabilidadesGT.ViewModels
 
         private async void LoadPreferences()
         {
-            MainViewModel.GetInstance().Preferencia = new PreferenciaViewModel();
+            MainViewModel.GetInstance().Preferencia = new PreferenciaViewModel(this);
             await App.Navigator.PushAsync(new PreferenciaPage(),true);
+
             NotificationService Noty = new NotificationService();
             Noty.Show("Test", "This is a test notification from the future.", 0, DateTime.Now.AddSeconds(10),true,true);
            

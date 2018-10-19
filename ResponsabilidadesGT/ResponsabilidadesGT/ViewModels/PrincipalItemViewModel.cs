@@ -7,19 +7,19 @@
 
     public class PrincipalItemViewModel:Glosario
     {
-        public ICommand SelectPrefencesCommand
-        {
-            get
-            {
-                return new RelayCommand(LoadPreferences);
-            }
-        }
+        //public ICommand SelectPrefencesCommand
+        //{
+        //    get
+        //    {
+        //        return new RelayCommand(LoadPreferences);
+        //    }
+        //}
 
-        private async void LoadPreferences()
-        {
-            MainViewModel.GetInstance().Preferencia = new PreferenciaViewModel();
-            await App.Navigator.PushAsync(new PreferenciaPage());
-        }
+        //private async void LoadPreferences()
+        //{
+        //    MainViewModel.GetInstance().Preferencia = new PreferenciaViewModel(this);
+        //    await App.Navigator.PushAsync(new PreferenciaPage());
+        //}
 
 
     }

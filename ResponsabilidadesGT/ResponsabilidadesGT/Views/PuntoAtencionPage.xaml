@@ -66,6 +66,20 @@
                                             Text="{Binding Telefono}"
                                             TextColor="Black">
                                             </Label>
+                                            <Label 
+                                                Text="Más Información:"
+                                                TextColor="Black">
+                                            </Label>
+                                            <Label
+                                            FontAttributes="Bold"
+                                            FontSize="Medium"
+                                            Text="{Binding Link}"     
+                                            TextColor="Blue">
+                                            <Label.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding UrlCommand}"
+                                                                      CommandParameter="{Binding Link}"/>
+                                            </Label.GestureRecognizers>
+                                            </Label>
                                         </StackLayout>
                                         
                                     </Grid>

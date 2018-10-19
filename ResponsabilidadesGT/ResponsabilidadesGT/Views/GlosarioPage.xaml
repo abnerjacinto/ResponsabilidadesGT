@@ -71,13 +71,7 @@
                                             <Label
                                             FontAttributes="Bold"
                                             FontSize="Medium"
-                                            Text="{Binding Ciclo}"
-                                            TextColor="Blue">
-                                                <Label.GestureRecognizers>
-                                                    <TapGestureRecognizer Command="{Binding UrlCommand}"
-                                                                          CommandParameter="{Binding Link}"/>
-                                                </Label.GestureRecognizers>
-                                                
+                                            Text="{Binding Ciclo}">
                                             </Label>
                                         </StackLayout>
                                         <Image 

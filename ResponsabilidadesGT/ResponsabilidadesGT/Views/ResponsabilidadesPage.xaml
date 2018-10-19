@@ -25,10 +25,11 @@
                     <DataTemplate>
                         <ViewCell>
                             <Frame
-                                BackgroundColor="AliceBlue"
+                                BackgroundColor="{StaticResource icons}"
                                 CornerRadius="20"
                                 HasShadow="true"
-                                Margin="5">
+                                Margin="5"
+                                BorderColor="{StaticResource divider}">
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding SelectObligacionCommand}"/>
                                 </Frame.GestureRecognizers>
@@ -58,6 +59,7 @@
                                         HorizontalOptions="End" 
                                         Source="ic_chevron_right">
                                     </Image>
+                                    
                                 </Grid>
                             </Frame>
                         </ViewCell>

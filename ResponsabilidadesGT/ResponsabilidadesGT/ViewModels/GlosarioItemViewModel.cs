@@ -18,10 +18,7 @@ namespace ResponsabilidadesGT.ViewModels
                 return new RelayCommand(SelectPuntos);
             }
         }
-        public ICommand UrlCommand => new Command<string>((url) =>
-        {
-            Device.OpenUri(new System.Uri($"http://{url}"));
-        });
+        
         #endregion
         #region Construct
         private async void SelectPuntos()

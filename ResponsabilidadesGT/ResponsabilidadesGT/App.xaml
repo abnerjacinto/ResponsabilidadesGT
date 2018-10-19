@@ -8,18 +8,17 @@
         <ResourceDictionary>
             <Color x:Key="Primary">#2196F3</Color>
             <Color x:Key="PrimaryDark">#1976D2</Color>
-            <Color x:Key="Accent">#96d1ff</Color>
+            <Color x:Key="Accent">#FF5722</Color>
             <Color x:Key="LightBackgroundColor">#FAFAFA</Color>
             <Color x:Key="DarkBackgroundColor">#C0C0C0</Color>
-            <Color x:Key="MediumGrayTextColor">#4d4d4d</Color>
-            <Color x:Key="LightTextColor">#999999</Color>
+            <Color x:Key="MediumGrayTextColor">#212121</Color>
+            <Color x:Key="LightTextColor">#757575</Color>
+            <Color x:Key="icons">#FFFFFF</Color>
+            <Color x:Key="divider">#BDBDBD</Color>
 
-            <Style TargetType="NavigationPage">
-                <Setter Property="BarBackgroundColor" Value="{StaticResource Primary}" />
-                <Setter Property="BarTextColor" Value="White" />
-            </Style>
+         
             <infra:InstanceLocator x:Key="Locator"/>
-            <x:String x:Key="UrlAPI">http://192.168.1.14</x:String>
+            <x:String x:Key="UrlAPI">http://192.168.1.3</x:String>
             <x:String x:Key="UrlFix">/Responsabilidades</x:String>
             <x:String x:Key="UrlRes">/public</x:String>
         </ResourceDictionary>

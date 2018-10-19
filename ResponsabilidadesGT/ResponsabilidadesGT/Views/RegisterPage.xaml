@@ -12,16 +12,17 @@
                 <Image 
                     Aspect="AspectFit"
                     Source="logo"
-                    WidthRequest="200"/>
-                <Grid Margin="5,0">
+                    WidthRequest="150"/>
+                <Grid Margin="5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="4*"/>
                     </Grid.ColumnDefinitions>
-                    <Label 
+                    <Image 
                         Grid.Row="0"
                         Grid.Column="0"
-                        Text="Usuario:" 
+                        Source="iconUsername"
+                        HeightRequest="30" 
                         VerticalOptions="Center"
                     />
                     <Entry
@@ -31,10 +32,11 @@
                         Placeholder="Ingrese de usuario"
                         Text="{Binding Name,Mode=TwoWay}">
                     </Entry>
-                    <Label 
+                    <Image 
                         Grid.Row="1"
                         Grid.Column="0"
-                        Text="Correo:" 
+                        Source="iconEmail"
+                        HeightRequest="30" 
                         VerticalOptions="Center"
                     />
                     <Entry
@@ -44,28 +46,30 @@
                         Placeholder="Ingrese correo."
                         Text="{Binding Email,Mode=TwoWay}">
                     </Entry>
-                    
-                    <Label 
-                        Grid.Row="3"
+
+                    <Image 
+                        Grid.Row="2"
                         Grid.Column="0"
-                        Text="Contraseña:" 
+                        Source="iconPassword"
+                        HeightRequest="30" 
                         VerticalOptions="Center"
                     />
                     <Entry
-                        Grid.Row="3"
+                        Grid.Row="2"
                         Grid.Column="1"
                         IsPassword="True"
                         Placeholder="Ingrese contraseña."
                         Text="{Binding Password,Mode=TwoWay}">
                     </Entry>
-                    <Label 
-                        Grid.Row="4"
+                    <Image 
+                        Grid.Row="3"
                         Grid.Column="0"
-                        Text="Nuevamente Constraseña:" 
+                        Source="iconPassword"
+                        HeightRequest="30" 
                         VerticalOptions="Center"
                     />
                     <Entry
-                        Grid.Row="4"
+                        Grid.Row="3"
                         Grid.Column="1"
                         IsPassword="True"
                         Placeholder="Re-ingrese contraseña."
@@ -75,12 +79,13 @@
                 <ActivityIndicator
                     IsRunning="{Binding IsRunning,Mode=TwoWay}">
                 </ActivityIndicator>
+                
                 <StackLayout
-                    Margin="30,0"
+                    Margin="20,0"
                     Orientation="Horizontal">
                     <Button 
                         Text="Registrarse"
-                        BackgroundColor="SkyBlue"
+                        BackgroundColor="{StaticResource PrimaryDark}"
                         HeightRequest="46"    
                         TextColor="White"
                         BorderRadius="23"

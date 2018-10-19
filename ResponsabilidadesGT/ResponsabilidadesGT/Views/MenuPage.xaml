@@ -4,14 +4,14 @@
              x:Class="ResponsabilidadesGT.Views.MenuPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              Title="Menú"
-             BackgroundColor="{StaticResource DarkBackgroundColor}"
+             BackgroundColor="{StaticResource PrimaryDark}"
     Icon="ic_action_menu">
     <ContentPage.Content>
         <StackLayout
             Padding="5,20,5,5">
             <Image
-                Source="Responsabilidades"
-                WidthRequest="100">
+                Source="logo"
+                WidthRequest="180">
             </Image>
             <Label
                 FontSize="Large"
@@ -21,7 +21,7 @@
                 TextColor="White">
             </Label>
             <ListView 
-                BackgroundColor="{StaticResource DarkBackgroundColor}"
+                BackgroundColor="{StaticResource PrimaryDark}"
                 ItemsSource="{Binding Menus}"
                 HasUnevenRows="True"
                 SeparatorVisibility="None">

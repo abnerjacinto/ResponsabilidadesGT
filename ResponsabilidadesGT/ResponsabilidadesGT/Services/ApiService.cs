@@ -345,50 +345,25 @@ namespace ResponsabilidadesGT.Services
             }
         }
 
-        public async Task<Response> PostCreateUser(
-            string urlBase,
-            string servicePrefix,
-            string controller,
-            string Content)
+        public async Task<TokenResponse> createuser(
+           string urlBase,
+           string content)
         {
             try
             {
-                
-                var content = new StringContent(
-                    Content,
-                    Encoding.UTF8,
-                    "application/json");
                 var client = new HttpClient();
                 client.BaseAddress = new Uri(urlBase);
-                var url = string.Format("{0}{1}", servicePrefix, controller);
-                var response = await client.PostAsync(url, content);
-
-                if (!response.IsSuccessStatusCode)
-                {
-                    return new Response
-                    {
-                        IsSuccess = false,
-                        Message = response.StatusCode.ToString(),
-                    };
-                }
-
-                var result = await response.Content.ReadAsStringAsync();
-                var newRecord = JsonConvert.DeserializeObject(result);
-
-                return new Response
-                {
-                    IsSuccess = true,
-                    Message = "Record added OK",
-                    Result = newRecord,
-                };
+                var response = await client.PostAsync("crearusuario",
+                    new StringContent(content,
+                    Encoding.UTF8, "application/x-www-form-urlencoded"));
+                var resultJSON = await response.Content.ReadAsStringAsync();
+                var result = JsonConvert.DeserializeObject<TokenResponse>(
+                    resultJSON);
+                return result;
             }
-            catch (Exception ex)
+            catch
             {
-                return new Response
-                {
-                    IsSuccess = false,
-                    Message = ex.Message,
-                };
+                return null;
             }
         }
 

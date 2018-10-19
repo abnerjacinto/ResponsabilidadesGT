@@ -4,7 +4,7 @@
     using System.Windows.Input;
     using Xamarin.Forms;
     using Services;
-    using Views;
+    using ResponsabilidadesGT.Views;
     using System.Text.RegularExpressions;
     using ResponsabilidadesGT.Helpers;
 
@@ -16,9 +16,9 @@
 
         #region attributes
         private string email;
-            private string password;
-            private bool isEnabled; 
-            private bool isRunning;
+        private string password;
+        private bool isEnabled; 
+        private bool isRunning;
         #endregion
         #region Propierties
         public string Email
@@ -136,11 +136,11 @@
                 }
                 var mainViewModel = MainViewModel.GetInstance();
                 mainViewModel.Token = token.Token;
-                //mainViewModel.TokenType = token.TokenType;
+                
                 if(this.IsRemember)
                 {
                     Settings.Token = token.Token;
-                    //Settings.TokenType = token.TokenType;
+                    
                 }
 
                 //mainViewModel.Responsabilidades = new ResponsabilidadesViewModel();
@@ -168,7 +168,86 @@
             MainViewModel.GetInstance().Register = new RegisterViewModel();
             await Application.Current.MainPage.Navigation.PushAsync(new RegisterPage());
         }
-
-            #endregion
+        public ICommand LoginFacebookComand
+        {
+            get
+            {
+                return new RelayCommand(LoginFacebook);
+            }
         }
+
+        private async void LoginFacebook()
+        {
+            var connection = await this.apiservice.CheckConnection();
+
+            if (!connection.IsSuccess)
+            {
+                this.IsRunning = false;
+                this.IsEnabled = true;
+                await Application.Current.MainPage.DisplayAlert(
+                    "Error",
+                    connection.Message,
+                    "Aceptar");
+                return;
+            }
+
+           await Application.Current.MainPage.Navigation.PushAsync(new LoginFacebookPage());
+        }
+
+        public ICommand LoginInstagramComand
+        {
+            get
+            {
+                return new RelayCommand(LoginInstagram);
+            }
+        }
+
+        private async void LoginInstagram()
+        {
+            var connection = await this.apiservice.CheckConnection();
+
+            if (!connection.IsSuccess)
+            {
+                this.IsRunning = false;
+                this.IsEnabled = true;
+                await Application.Current.MainPage.DisplayAlert(
+                    "Error",
+                    connection.Message,
+                    "Aceptar");
+                return;
+            }
+
+           await Application.Current.MainPage.Navigation.PushAsync(new LoginInstagramPage());
+        }
+
+        public ICommand LoginTwitterComand
+        {
+            get
+            {
+                return new RelayCommand(LoginTwitter);
+            }
+        }
+
+        private async void LoginTwitter()
+        {
+            var connection = await this.apiservice.CheckConnection();
+
+            if (!connection.IsSuccess)
+            {
+                this.IsRunning = false;
+                this.IsEnabled = true;
+                await Application.Current.MainPage.DisplayAlert(
+                    "Error",
+                    connection.Message,
+                    "Aceptar");
+                return;
+            }
+
+            await Application.Current.MainPage.Navigation.PushAsync(new LoginTwitterPage());
+        }
+
+
+        #endregion
+    }
+
 }

@@ -20,15 +20,9 @@ namespace ResponsabilidadesGT.ViewModels
         #endregion
         #region Properties
         public Obligacion Obligacion { get; set; }
-
-       
-        public List<GlosarioItemViewModel> listGlosario;
-
-        public List<Glosario> listGlosarios;
-
         public ObservableCollection<GlosarioItemViewModel> Glosarios
         {
-            
+        
             get { return glosarios; }
             set { SetValue(ref glosarios, value); }
         }
@@ -46,7 +40,6 @@ namespace ResponsabilidadesGT.ViewModels
         #region methods
         private async void LoadGlosario()
         {
-
             var connection = await this.apiservice.CheckConnection();
             if (!connection.IsSuccess)
             {
@@ -72,28 +65,23 @@ namespace ResponsabilidadesGT.ViewModels
                     "Aceptar");
                 return;
             }
-
             MainViewModel.GetInstance().GlosarioList = (List<Glosario>)response.Result;
             this.Glosarios = new ObservableCollection<GlosarioItemViewModel>(
             this.ToItemGlosarioViewModel().Where(l => l.IdObligacion.Equals(this.Obligacion.IdObligacion)));
-            
-
-
-
+          
         }
         private IEnumerable<GlosarioItemViewModel> ToItemGlosarioViewModel()
         {
             return MainViewModel.GetInstance().GlosarioList.Select(g => new GlosarioItemViewModel
             {
+
                 IdGlosario = g.IdGlosario,
                 IdObligacion = g.IdObligacion,
                 NombreObligacion=g.NombreObligacion,
                 Descripcion = g.Descripcion,
                 FechaLimite = g.FechaLimite,
                 EstadoObligacion=g.EstadoObligacion,
-
-               
-
+                Ciclo=g.Ciclo,
             });
         }
         #endregion
@@ -137,8 +125,6 @@ namespace ResponsabilidadesGT.ViewModels
                     "¡La información se cargo con éxito!",
                     "Aceptar");
                     await dataservice.dbClose();
-                    
-                   
                     return;
                 }
                 catch (Exception e)
@@ -149,8 +135,6 @@ namespace ResponsabilidadesGT.ViewModels
                     "ok");
                     return;
                 }
-                    
-                
             }
             else 
             {

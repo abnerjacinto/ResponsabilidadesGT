@@ -20,6 +20,7 @@ namespace ResponsabilidadesGT.ViewModels
         private string password;
         private string rPassword;
         private bool isRunning;
+        private bool isEnabled;
         #endregion
         #region Properties
         public string Name
@@ -54,11 +55,17 @@ namespace ResponsabilidadesGT.ViewModels
             get { return isRunning; }
             set { SetValue(ref isRunning, value); }
         }
+        public bool IsEnabled
+        {
+            get { return isEnabled; }
+            set { SetValue(ref isEnabled, value); }
+        }
         #endregion
         #region Constructor
         public RegisterViewModel()
         {
             this.apiservice = new ApiService();
+            this.IsEnabled = true;
             
         }
         #endregion
@@ -73,30 +80,51 @@ namespace ResponsabilidadesGT.ViewModels
 
         private async void Register()
         {
-            Validacion();
+            //Validacion();
+            this.IsRunning = true;
+            this.IsEnabled = false;
             var connection = await this.apiservice.CheckConnection();
             if (!connection.IsSuccess)
             {
+               
                await Application.Current.MainPage.DisplayAlert(
                     "Error",
                     connection.Message,
                     "ok");
+                this.IsRunning = false;
+                this.IsEnabled = true;
                 return;
             }
+            
             var url = Application.Current.Resources["UrlAPI"].ToString();
-            var Fix = Application.Current.Resources["UrlFix"].ToString();
-            var Res = Application.Current.Resources["UrlRes"].ToString();
-            var response = await this.apiservice.PostCreateUser(url,
-                Fix,
-                $"{Res}/crearusuario",
-                $"name={this.Name}&email={this.Email}&password={this.Password}&confirmarpassword={this.RPassword}&usuarioadiciono={this.Name}&slctipousuario{2}");
-            if (!response.IsSuccess)
+            var fix = Application.Current.Resources["UrlFix"].ToString();
+            var res = Application.Current.Resources["UrlRes"].ToString();
+            var response = await this.apiservice.createuser($"{url}{fix}{res}/",
+            $"name={this.Name}&email={this.Email}&password={this.Password}&confirmarpassword={this.RPassword}&usuarioadiciono={this.Name}&slctipousuario=2");
+            if (!response.Success)
             {
                 
                 await Application.Current.MainPage.DisplayAlert(
                     "Error",
                     response.Message,
-                    "ok");
+                    "Aceptar");
+                this.IsRunning = false;
+                this.IsEnabled = true;
+                return;
+            }
+            else
+            {
+
+                await Application.Current.MainPage.DisplayAlert(
+                   "Creado",
+                   response.Message,
+                   "Aceptar");
+                this.IsEnabled = true;
+                this.IsRunning = false;
+                this.Name = string.Empty;
+                this.Email = string.Empty;
+                this.Password = string.Empty;
+                this.RPassword = string.Empty;
                 return;
             }
 

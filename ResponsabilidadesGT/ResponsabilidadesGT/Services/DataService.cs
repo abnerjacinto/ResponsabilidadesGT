@@ -60,7 +60,7 @@
             var array = query.ToArray();
             var list = array.Select(g => new Glosario
             {
-            
+                ID=g.ID,
                 IdGlosario=g.IdGlosario,
                 NombreObligacion=g.NombreObligacion,
                 Descripcion=g.Descripcion,
