@@ -51,10 +51,6 @@ namespace ResponsabilidadesGT.ViewModels
             this.IsRemember = true;
             this.Obligacion = obligacion;
             this.fechaSelect = TimeZoneInfo.ConvertTime(DateTime.UtcNow, TimeZoneInfo.Local);
-            TimePicker timePicker = new TimePicker();
-            timePicker.Time =DateTime.Now.TimeOfDay;
-            this.timeSelect.AddHours(timePicker.Time.Hours);
-            this.timeSelect.AddMinutes(timePicker.Time.Minutes);
         }
 
 

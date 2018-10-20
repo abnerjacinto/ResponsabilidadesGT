@@ -20,7 +20,7 @@ namespace ResponsabilidadesGT.Droid
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            System.Threading.Thread.Sleep(1000);
+            System.Threading.Thread.Sleep(1800);
             this.StartActivity(typeof(MainActivity));
             // Create your application here
         }

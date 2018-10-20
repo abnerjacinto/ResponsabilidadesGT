@@ -30,7 +30,7 @@ namespace ResponsabilidadesGT.ViewModels
 
             if (this.PageName == "LoginPage")
             {
-                Settings.IsRemembered = "false";
+                Settings.IsRemembered = false;
                 Settings.Token = String.Empty;
                 //Settings.TokenType = string.Empty;
                 var mainViewModel = MainViewModel.GetInstance();

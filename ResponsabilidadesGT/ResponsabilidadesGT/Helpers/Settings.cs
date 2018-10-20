@@ -4,9 +4,9 @@ namespace ResponsabilidadesGT.Helpers
 {
     using Plugin.Settings;
     using Plugin.Settings.Abstractions;
-    public class Settings
+    public static class Settings
     {
-        static ISettings AppSettings
+        private static ISettings AppSettings
         {
             get
             {
@@ -14,20 +14,36 @@ namespace ResponsabilidadesGT.Helpers
             }
         }
 
-        const string isRemembered = "IsRemembered";
-        const string token = "Token";
-        const string tokenType = "TokenType";
-        static readonly string stringDefault = string.Empty;
+        #region Setting Constants
+        private const string tokenType = "TokenType";
+        private const string token = "Token";
+        private const string userASP = "UserASP";
+        private const string isRemembered = "IsRemembered";
+        private static readonly string stringDefault = string.Empty;
+        private static readonly bool booleanDefault = false;
+        #endregion
 
-        public static string IsRemembered
+        public static string UserASP
         {
             get
             {
-                return AppSettings.GetValueOrDefault(isRemembered, stringDefault);
+                return AppSettings.GetValueOrDefault(userASP, stringDefault);
             }
             set
             {
-                AppSettings.AddOrUpdateValue(isRemembered, value);
+                AppSettings.AddOrUpdateValue(userASP, value);
+            }
+        }
+
+        public static string TokenType
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault(tokenType, stringDefault);
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue(tokenType, value);
             }
         }
 
@@ -42,15 +58,16 @@ namespace ResponsabilidadesGT.Helpers
                 AppSettings.AddOrUpdateValue(token, value);
             }
         }
-        public static string TokenType
+
+        public static bool IsRemembered
         {
             get
             {
-                return AppSettings.GetValueOrDefault(tokenType, stringDefault);
+                return AppSettings.GetValueOrDefault(isRemembered, booleanDefault);
             }
             set
             {
-                AppSettings.AddOrUpdateValue(tokenType, value);
+                AppSettings.AddOrUpdateValue(isRemembered, value);
             }
         }
     }

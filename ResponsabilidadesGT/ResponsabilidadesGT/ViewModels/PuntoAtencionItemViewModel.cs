@@ -1,11 +1,11 @@
 ﻿
 namespace ResponsabilidadesGT.ViewModels
 {
-    using ResponsabilidadesGT.Models;
+    
     using System.Windows.Input;
     using Xamarin.Forms;
 
-    class PuntoAtencionItemViewModel:PuntodeAtencion
+    class PuntoAtencionItemViewModel:Models.PuntodeAtencion
     {
         public ICommand UrlCommand => new Command<string>((url) =>
         {

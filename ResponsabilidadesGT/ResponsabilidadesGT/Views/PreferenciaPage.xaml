@@ -24,7 +24,7 @@
                     HorizontalOptions="CenterAndExpand"
                     HeightRequest="50"
                     x:Name="FechaNotificacion"
-                    Date="{Binding FechaSelect}">
+                    Date="{Binding FechaSelect, Mode=TwoWay}">
                     
                 </DatePicker>
                 <Label
@@ -38,7 +38,7 @@
                     HorizontalOptions="CenterAndExpand"
                     HeightRequest="50"
                     x:Name="timePicker"
-                    Time="{Binding TimeSelect}">
+                    Time="{Binding TimeSelect, Mode=TwoWay}">
                     </TimePicker>
                     <Label
                         HorizontalOptions="CenterAndExpand"
