@@ -6,6 +6,7 @@
     using System.Linq;
     using System.Windows.Input;
     using GalaSoft.MvvmLight.Command;
+    using ResponsabilidadesGT.Helpers;
     using ResponsabilidadesGT.Models;
     using ResponsabilidadesGT.Services;
     using Xamarin.Forms;
@@ -67,7 +68,9 @@
             var Res = Application.Current.Resources["UrlRes"].ToString();
             var response = await this.apiservice.GetList<Obligacion>(url,
                 Fix,
-                $"{Res}/getobligaciones/2");
+                $"{Res}/getobligaciones/2",
+                "Bearer",
+                Settings.Token);
             if (!response.IsSuccess)
             {
                 this.IsRefreshing = false;
