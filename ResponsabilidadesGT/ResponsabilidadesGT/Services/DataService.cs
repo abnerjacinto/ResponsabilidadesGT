@@ -95,6 +95,7 @@
             var array = query.ToArray();
             var list = array.Select(a => new Actividad
             {
+                ID=a.ID,
                 IdActividad=a.IdActividad,
                 FechaAviso=a.FechaAviso,
                 Prorroga=a.Prorroga,

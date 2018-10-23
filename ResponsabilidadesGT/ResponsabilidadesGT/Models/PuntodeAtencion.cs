@@ -7,8 +7,9 @@
 
     public class PuntodeAtencion
     {
+        [PrimaryKey, AutoIncrement]
+        public int ID { get; set; }
         [JsonProperty(PropertyName = "id_punto_de_atencion")]
-        [PrimaryKey, Unique]
         public int IdPuntodeAtencion { get; set; }
         [JsonProperty(PropertyName = "id_glosario")]
         public int IdGlosario { get; set; }
