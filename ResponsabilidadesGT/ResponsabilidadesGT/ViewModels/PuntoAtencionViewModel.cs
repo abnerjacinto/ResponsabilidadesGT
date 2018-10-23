@@ -54,9 +54,9 @@
             var Res = Application.Current.Resources["UrlRes"].ToString();
             var response = await this.apiservice.GetList<PuntodeAtencion>(url,
                     Fix,
-                   $"{Res}/getpuntoatencion/2",
+                   $"{Res}/getpuntoatencion/2"/*,
                    "Bearer",
-                   Settings.Token);
+                   Settings.Token*/);
             if (!response.IsSuccess)
             {
 

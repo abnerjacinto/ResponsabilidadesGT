@@ -24,6 +24,7 @@
                     HorizontalOptions="CenterAndExpand"
                     HeightRequest="50"
                     x:Name="FechaNotificacion"
+                    Format="dd/mm/yyyy"
                     Date="{Binding FechaSelect, Mode=TwoWay}">
                     
                 </DatePicker>
@@ -37,7 +38,7 @@
                     VerticalOptions="CenterAndExpand" 
                     HorizontalOptions="CenterAndExpand"
                     HeightRequest="50"
-                    x:Name="timePicker"
+                    x:Name="TimeSelect"
                     Time="{Binding TimeSelect, Mode=TwoWay}">
                     </TimePicker>
                     <Label
@@ -83,7 +84,7 @@
                         TextColor="White"
                         BorderRadius="23"
                         HorizontalOptions="CenterAndExpand"
-                        Command="{Binding RegisterCommand}"
+                        Command="{Binding SaveCommand}"
                         IsEnabled="{Binding IsEnabled,Mode=TwoWay}">
                     </Button>
 

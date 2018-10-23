@@ -78,6 +78,7 @@
             var array = query.ToArray();
             var list = array.Select(o => new Obligacion
             {
+                ID=o.ID,
                 IdObligacion=o.IdObligacion,
                 NombreObligacion=o.NombreObligacion,
                 EstadoObligacion=o.EstadoObligacion,
@@ -115,6 +116,7 @@
             var array = query.ToArray();
             var list = array.Select(p => new PuntodeAtencion
             {
+                ID=p.ID,
                 IdPuntodeAtencion=p.IdPuntodeAtencion,
                 IdGlosario=p.IdGlosario,
                 NombreInstitucion=p.NombreInstitucion,

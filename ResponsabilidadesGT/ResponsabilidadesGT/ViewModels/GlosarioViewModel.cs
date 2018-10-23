@@ -4,6 +4,7 @@ namespace ResponsabilidadesGT.ViewModels
     using GalaSoft.MvvmLight.Command;
     using Models;
     using ResponsabilidadesGT.Helpers;
+    using ResponsabilidadesGT.Views;
     using Services;
     using System;
     using System.Collections.Generic;
@@ -56,9 +57,9 @@ namespace ResponsabilidadesGT.ViewModels
             var Res = Application.Current.Resources["UrlRes"].ToString();
             var response = await this.apiservice.GetList<Glosario>(url,
                     Fix,
-                   $"{Res}/getglosario/2",
+                   $"{Res}/getglosario/2"/*,
                    "Bearer",
-                   Settings.Token);
+                   Settings.Token*/);
             if (!response.IsSuccess)
             {
 
@@ -123,6 +124,7 @@ namespace ResponsabilidadesGT.ViewModels
                     await dataservice.Insert(Glosario.FirstOrDefault());
                     await dataservice.Insert(Obli);
                     MainViewModel.GetInstance().Principal = new PrincipalViewModel();
+                    Application.Current.MainPage = new MasterPage();
                     await Application.Current.MainPage.DisplayAlert(
                     "Éxito",
                     "¡La información se cargo con éxito!",

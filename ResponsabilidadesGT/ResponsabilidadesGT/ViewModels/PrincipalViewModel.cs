@@ -98,6 +98,7 @@
             
             return this.Obligacions.Select(o => new ObligacionItemViewModel
             {
+                ID=o.ID,
                 IdObligacion = o.IdObligacion,
                 NombreObligacion = o.NombreObligacion,
                 EstadoObligacion = o.EstadoObligacion,

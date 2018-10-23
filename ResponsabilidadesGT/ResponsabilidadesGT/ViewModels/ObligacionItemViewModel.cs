@@ -55,13 +55,12 @@ namespace ResponsabilidadesGT.ViewModels
             MainViewModel.GetInstance().Preferencia = new PreferenciaViewModel(this);
             await App.Navigator.PushAsync(new PreferenciaPage(),true);
 
-            NotificationService Noty = new NotificationService();
-            Noty.Show("Test", "This is a test notification from the future.", 0, DateTime.Now.AddSeconds(10),true,true);
            
         }
         private async void DeleteObligacion()
         {
             Obligacion obligacion = new Obligacion();
+            obligacion.ID = this.ID;
             obligacion.IdObligacion = this.IdObligacion;
             obligacion.NombreObligacion = this.NombreObligacion;
             obligacion.EstadoObligacion = this.EstadoObligacion;
