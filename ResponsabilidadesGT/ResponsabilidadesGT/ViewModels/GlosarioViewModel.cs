@@ -57,9 +57,9 @@ namespace ResponsabilidadesGT.ViewModels
             var Res = Application.Current.Resources["UrlRes"].ToString();
             var response = await this.apiservice.GetList<Glosario>(url,
                     Fix,
-                   $"{Res}/getglosario/2"/*,
+                   $"{Res}/getglosario/2",
                    "Bearer",
-                   Settings.Token*/);
+                   Settings.Token);
             if (!response.IsSuccess)
             {
 
