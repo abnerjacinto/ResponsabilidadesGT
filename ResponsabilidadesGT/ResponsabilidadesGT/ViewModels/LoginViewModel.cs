@@ -168,7 +168,7 @@
             MainViewModel.GetInstance().Register = new RegisterViewModel();
             await Application.Current.MainPage.Navigation.PushAsync(new RegisterPage());
         }
-        public ICommand LoginFacebookComand
+        public ICommand LoginFacebookCommand
         {
             get
             {
@@ -194,7 +194,7 @@
            await Application.Current.MainPage.Navigation.PushAsync(new LoginFacebookPage());
         }
 
-        public ICommand LoginInstagramComand
+        public ICommand LoginInstagramCommand
         {
             get
             {
@@ -220,7 +220,7 @@
            await Application.Current.MainPage.Navigation.PushAsync(new LoginInstagramPage());
         }
 
-        public ICommand LoginTwitterComand
+        public ICommand LoginTwitterCommand
         {
             get
             {

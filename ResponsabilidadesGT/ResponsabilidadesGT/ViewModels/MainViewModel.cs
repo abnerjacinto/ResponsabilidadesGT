@@ -10,6 +10,7 @@ namespace ResponsabilidadesGT.ViewModels
     using Models;
     using ObligacionesGT.Views;
     using ResponsabilidadesGT.Services;
+    using ResponsabilidadesGT.Views;
 
     class MainViewModel
     {
@@ -49,6 +50,7 @@ namespace ResponsabilidadesGT.ViewModels
         public PuntoAtencionViewModel PuntoAtencion { get; set; }
         public PrincipalViewModel Principal { get; set; }
         public PreferenciaViewModel Preferencia { get; set; }
+        public AddObligacionViewModel AddObligacion { get; set; }
 
         #endregion
         #region Constructor
@@ -87,12 +89,12 @@ namespace ResponsabilidadesGT.ViewModels
                 PageName = "ResponsabilidadesPage",
             });
 
-            this.Menus.Add(new MenuItemViewModel
-            {
-                Icon = "ic_settings",
-                Title = "Mi Perfil",
-                PageName = "PerfilPage",
-            });         
+            //this.Menus.Add(new MenuItemViewModel
+            //{
+            //    Icon = "ic_settings",
+            //    Title = "Mi Perfil",
+            //    PageName = "PerfilPage",
+            //});         
           
             this.Menus.Add(new MenuItemViewModel
             {
@@ -107,13 +109,13 @@ namespace ResponsabilidadesGT.ViewModels
         {
             get
             {
-                return new RelayCommand(AddObligacion);
+                return new RelayCommand(AddObligacionPage);
             }
         }
 
-        private async void AddObligacion()
+        private async void AddObligacionPage()
         {
-            //MainViewModel.GetInstance().PuntoAtencion = new PuntoAtencionViewModel(this);
+            MainViewModel.GetInstance().AddObligacion = new AddObligacionViewModel();
             await App.Navigator.PushAsync(new AddObligacionPage());
         }
         #endregion

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace ObligacionesGT.Views
+namespace ResponsabilidadesGT.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class AddObligacionPage : ContentPage

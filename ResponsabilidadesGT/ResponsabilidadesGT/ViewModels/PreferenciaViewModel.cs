@@ -25,6 +25,9 @@ namespace ResponsabilidadesGT.ViewModels
         private string prorroga;
         //Atributo de binding estado de la actividad
         private bool isRemember;
+        //atributo binding con boton
+        private bool isEnabled;
+        private bool isRunning;
         //Objeto del modelo Obligacion para asignar datos
         private Obligacion Obligacion;
 
@@ -48,10 +51,16 @@ namespace ResponsabilidadesGT.ViewModels
             get { return prorroga; }
             set { SetValue(ref prorroga, value); }
         }
-        public bool IsRemember
+        public bool IsRunning
         {
-            get { return isRemember; }
-            set { SetValue(ref isRemember, value); }
+            get { return isRunning; }
+            set { SetValue(ref isRunning, value); }
+        }
+        public bool IsRemember { get; set; }
+        public bool IsEnabled
+        {
+            get { return isEnabled; }
+            set { SetValue(ref isEnabled, value); }
         }
         #endregion
         #region Constructor
@@ -63,6 +72,7 @@ namespace ResponsabilidadesGT.ViewModels
             this.Obligacion = obligacion;
             this.fechaSelect = TimeZoneInfo.ConvertTime(DateTime.UtcNow, TimeZoneInfo.Local);
             this.timeSelect = DateTimeOffset.Now.TimeOfDay;
+            this.IsEnabled = true;
         }
 
 
@@ -70,6 +80,8 @@ namespace ResponsabilidadesGT.ViewModels
         #region Methods
         private async void SaveActividad()
         {
+            this.IsEnabled = false;
+            this.IsRunning = true;
             //realiza consulta a la DB, obtiene todas las obligaciones
             this.Obligaciones = await dataService.GetAllObligacion();
             //Se filtra la obligacion, de acuerdo a la obligacion seleccionada
@@ -104,6 +116,15 @@ namespace ResponsabilidadesGT.ViewModels
                                              0, fechaRecordatorio,
                                              true,
                                              true);
+            this.IsEnabled = true;
+            this.IsRunning = false;
+            await Application.Current.MainPage.DisplayAlert(
+                    "Exitoso",
+                    "Preferecia guardado exitosamente!",
+                    "Aceptar");
+            
+
+            return;
         }
         #endregion
         #region ICommand

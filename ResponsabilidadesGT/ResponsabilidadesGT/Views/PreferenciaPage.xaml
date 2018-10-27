@@ -25,7 +25,8 @@
                     HeightRequest="50"
                     x:Name="FechaNotificacion"
                     Format="dd/mm/yyyy"
-                    Date="{Binding FechaSelect, Mode=TwoWay}">
+                    Date="{Binding FechaSelect, Mode=TwoWay}"
+                    IsEnabled="{Binding IsEnabled, Mode=TwoWay}">
                     
                 </DatePicker>
                 <Label
@@ -39,7 +40,8 @@
                     HorizontalOptions="CenterAndExpand"
                     HeightRequest="50"
                     x:Name="TimeSelect"
-                    Time="{Binding TimeSelect, Mode=TwoWay}">
+                    Time="{Binding TimeSelect, Mode=TwoWay}"
+                    IsEnabled="{Binding IsEnabled, Mode=TwoWay}">
                     </TimePicker>
                     <Label
                         HorizontalOptions="CenterAndExpand"
@@ -68,12 +70,9 @@
                     </Switch>
                 </StackLayout>
                     
+                      
                 
-                   
                 
-                <ActivityIndicator
-                    IsRunning="{Binding IsRunning,Mode=TwoWay}">
-                </ActivityIndicator>
                 <StackLayout
                     Margin="10,0"
                     Orientation="Horizontal">
@@ -87,6 +86,9 @@
                         Command="{Binding SaveCommand}"
                         IsEnabled="{Binding IsEnabled,Mode=TwoWay}">
                     </Button>
+                    <ActivityIndicator
+                    IsRunning="{Binding IsRunning,Mode=TwoWay}">
+                    </ActivityIndicator>
 
                 </StackLayout>
             </StackLayout>

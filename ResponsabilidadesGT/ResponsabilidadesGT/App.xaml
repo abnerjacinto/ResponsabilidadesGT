@@ -19,8 +19,8 @@
 
             <!-- Parametros -->
             <infra:InstanceLocator x:Key="Locator"/>
-            <x:String x:Key="UrlAPI">http://192.168.1.3</x:String>
-            <x:String x:Key="UrlFix">/Responsabilidades</x:String>
+            <x:String x:Key="UrlAPI">http://192.168.100.10</x:String>
+            <x:String x:Key="UrlFix">/Responsabilidades_GT</x:String>
             <x:String x:Key="UrlRes">/public</x:String>
             <!-- Facebook -->
             <x:String x:Key="FacebookAppID">2251059328298257</x:String>
@@ -29,20 +29,22 @@
             <x:String x:Key="FacebookScope">email</x:String>
 
             <!-- Instagram -->
-            <x:String x:Key="InstagramAppID">95e62f4c54f544018e5c982beaeffb62</x:String>
+            <x:String x:Key="InstagramAppID">2be4d3941c9e4e8483fb903780812968</x:String>
             <x:String x:Key="InstagramAuthURL">https://api.instagram.com/oauth/authorize/</x:String>
             <x:String x:Key="InstagramRedirectURL">https://www.instagram.com/</x:String>
             <x:String x:Key="InstagramScope">basic</x:String>
             <x:String x:Key="InstagramProfileInfoURL">https://api.instagram.com/v1/users/self/?access_token</x:String>
 
             <!-- Twitter -->
-            <x:String x:Key="TwitterConsumerKey">YQTr4UuxgOs9IFkry9LorHN8k</x:String>
-            <x:String x:Key="TwitterConsumerSecret">Zz0V2rikyOB0ZcHWegpwU7PbndiOpPmNS2NeyUryrmlEsL2eEt</x:String>
-            <x:String x:Key="TwitterRequestTokenURL">https://api.twitter.com/oauth/request_token</x:String>
-            <x:String x:Key="TwitterAuthorizeURL">https://api.twitter.com/oauth/authorize</x:String>
-            <x:String x:Key="TwitterAccessTokenURL">https://api.twitter.com/oauth/access_token</x:String>
-            <x:String x:Key="Url">http://www.zulu-software.com</x:String>
+            <x:String x:Key="TwitterKey">Y6jFLbQlnAJ41UB7HivJgCL6O</x:String>
+            <x:String x:Key="TwitterSecret">fjhtnyyCjlD4G2IFWSIeSJzdMVZhRu4oApJf1i3Qsl4oGreLe0</x:String>
+            <x:String x:Key="TwitterRequestURL">https://api.twitter.com/oauth/request_token</x:String>
+            <x:String x:Key="TwitterAuthURL">https://twitter.com/oauth/authenticate</x:String>
+            <x:String x:Key="TwitterURLAccess">https://api.twitter.com/oauth/access_token</x:String>
+            <x:String x:Key="TwitterCallbackURL">https://mobile.twitter.com/</x:String>
             <x:String x:Key="TwitterProfileInfoURL">https://api.twitter.com/1.1/account/verify_credentials.json</x:String>
+
+
 
         </ResourceDictionary>
      </Application.Resources>
