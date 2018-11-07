@@ -75,6 +75,8 @@ namespace ResponsabilidadesGT.ViewModels
                 this.dataservice = new DataService();
                 await dataservice.Delete(obligacion);
                 await dataservice.dbClose();
+                MainViewModel.GetInstance().Principal = new PrincipalViewModel();
+                Application.Current.MainPage = new MasterPage();
             }
                 
         }

@@ -50,11 +50,10 @@
                 return;
             }
             var url = Application.Current.Resources["UrlAPI"].ToString();
-            var Fix = Application.Current.Resources["UrlFix"].ToString();
-            var Res = Application.Current.Resources["UrlRes"].ToString();
-            var response = await this.apiservice.GetList<PuntodeAtencion>(url,
-                    Fix,
-                   $"{Res}/getpuntoatencion/2",
+            
+            var response = await this.apiservice.GetList<PuntodeAtencion>(
+                    url,
+                   "/getpuntoatencion/2",
                    "Bearer",
                    Settings.Token);
             if (!response.IsSuccess)

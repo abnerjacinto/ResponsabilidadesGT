@@ -18,11 +18,8 @@
         public string Descripcion { get; set; }
         [JsonProperty(PropertyName = "fecha_limite")]
         public string FechaLimite { get; set; }
-<<<<<<< HEAD
         [JsonProperty(PropertyName = "id_punto_de_atencion")]
         public int IdPuntodeAtencion { get; set; }
-=======
->>>>>>> 9ef731b6110a1b5190a12cba0138a6171dcb3785
         [JsonProperty(PropertyName = "nombre_institucion")]
         public string NombreInstitucion { get; set; }
         [JsonProperty(PropertyName = "estado_obligacion")]

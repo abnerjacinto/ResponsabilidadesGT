@@ -543,7 +543,7 @@ namespace ResponsabilidadesGT.Services
             }
         }
 
-        public async Task<TokenResponse> LoginFacebook(string urlBase, string servicePrefix, string controller, FacebookResponse profile)
+        public async Task<TokenResponse> LoginFacebook(string urlBase, FacebookResponse profile)
         {
             try
             {

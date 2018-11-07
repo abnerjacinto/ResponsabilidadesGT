@@ -53,21 +53,15 @@ namespace ResponsabilidadesGT.ViewModels
                 return;
             }
             var url = Application.Current.Resources["UrlAPI"].ToString();
-<<<<<<< HEAD
+
             var response = await this.apiservice.GetList<Glosario>(
                 url,
-                "/getglosario/2",
+                "/getglosarios/2",
                 "Bearer",
                 Settings.Token);
-=======
-            var Fix = Application.Current.Resources["UrlFix"].ToString();
-            var Res = Application.Current.Resources["UrlRes"].ToString();
-            var response = await this.apiservice.GetList<Glosario>(url,
-                    Fix,
-                   $"{Res}/getglosarios/2",
-                   "Bearer",
-                   Settings.Token);
->>>>>>> 9ef731b6110a1b5190a12cba0138a6171dcb3785
+
+                 
+
             if (!response.IsSuccess)
             {
 
@@ -92,14 +86,11 @@ namespace ResponsabilidadesGT.ViewModels
                 NombreObligacion=g.NombreObligacion,
                 Descripcion = g.Descripcion,
                 FechaLimite = g.FechaLimite,
-<<<<<<< HEAD
+
                 IdPuntodeAtencion = g.IdPuntodeAtencion,
                 NombreInstitucion = g.NombreInstitucion,
                 EstadoObligacion =g.EstadoObligacion,
-=======
-                NombreInstitucion=g.NombreInstitucion,
-                EstadoObligacion=g.EstadoObligacion,
->>>>>>> 9ef731b6110a1b5190a12cba0138a6171dcb3785
+
                 Ciclo=g.Ciclo,
             });
         }

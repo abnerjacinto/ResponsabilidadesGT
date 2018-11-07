@@ -76,10 +76,7 @@ namespace ResponsabilidadesGT.ViewModels
                 obli.IdObligacion = 0;
                 obli.NombreObligacion = this.NombreObligacion;
                 obli.EstadoObligacion = "Activo";
-                obli.UsuarioAdicionoObligacion = string.Empty;
-                obli.FechaAdicionoObligacion = string.Empty;
-                obli.UsuarioModificoObligacion = string.Empty;
-                obli.FechaModificoObligacion = string.Empty;
+             
             try
             {
                 await dataService.Insert(obli);

@@ -93,10 +93,7 @@
                 IdObligacion = l.IdObligacion,
                 NombreObligacion=l.NombreObligacion,
                 EstadoObligacion=l.EstadoObligacion,
-                UsuarioAdicionoObligacion= l.UsuarioAdicionoObligacion,
-                FechaAdicionoObligacion= l.FechaAdicionoObligacion,
-                UsuarioModificoObligacion=l.UsuarioModificoObligacion,
-                FechaModificoObligacion=l.FechaModificoObligacion
+              
             });
         }
         #endregion

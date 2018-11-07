@@ -95,10 +95,7 @@ namespace ResponsabilidadesGT.ViewModels
                 obli.IdObligacion = o.IdObligacion;
                 obli.NombreObligacion = o.NombreObligacion;
                 obli.EstadoObligacion = o.EstadoObligacion;
-                obli.UsuarioAdicionoObligacion = o.UsuarioAdicionoObligacion;
-                obli.FechaAdicionoObligacion = o.FechaAdicionoObligacion;
-                obli.UsuarioModificoObligacion = o.UsuarioModificoObligacion;
-                obli.FechaModificoObligacion = o.FechaModificoObligacion;
+               
             }
             //Se instancia nueva fecha, que proviene de la View con los valores ingresados
             DateTime fechaRecordatorio = new DateTime(Convert.ToInt32(FechaSelect.ToString("yyyy")),

@@ -19,13 +19,9 @@
 
             <!-- Parametros -->
             <infra:InstanceLocator x:Key="Locator"/>
-<<<<<<< HEAD
             <x:String x:Key="UrlAPI">https://responsabilidadesgt.com</x:String>
-=======
-            <x:String x:Key="UrlAPI">http://192.168.0.102</x:String>
->>>>>>> 9ef731b6110a1b5190a12cba0138a6171dcb3785
-            <x:String x:Key="UrlFix">/Responsabilidades_GT</x:String>
-            <x:String x:Key="UrlRes">/public</x:String>
+
+           
             <!-- Facebook -->
             <x:String x:Key="FacebookAppID">2251059328298257</x:String>
             <x:String x:Key="FacebookAuthURL">https://www.facebook.com/dialog/oauth/</x:String>

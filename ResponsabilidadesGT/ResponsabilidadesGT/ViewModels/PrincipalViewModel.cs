@@ -102,10 +102,7 @@
                 IdObligacion = o.IdObligacion,
                 NombreObligacion = o.NombreObligacion,
                 EstadoObligacion = o.EstadoObligacion,
-                UsuarioAdicionoObligacion = o.UsuarioAdicionoObligacion,
-                FechaAdicionoObligacion = o.FechaAdicionoObligacion,
-                UsuarioModificoObligacion = o.UsuarioModificoObligacion,
-                FechaModificoObligacion = o.FechaModificoObligacion,
+               
             });
            
         }
