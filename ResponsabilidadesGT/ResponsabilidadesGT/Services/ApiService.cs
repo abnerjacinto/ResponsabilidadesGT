@@ -159,7 +159,6 @@ namespace ResponsabilidadesGT.Services
 
         public async Task<Response> GetList<T>(
             string urlBase,
-            string servicePrefix,
             string controller,
             string tokenType,
             string accessToken)
@@ -170,7 +169,7 @@ namespace ResponsabilidadesGT.Services
                 client.DefaultRequestHeaders.Authorization =
                     new AuthenticationHeaderValue(tokenType, accessToken);
                 client.BaseAddress = new Uri(urlBase);
-                var url = string.Format("{0}{1}", servicePrefix, controller);
+                var url = string.Format("{0}",controller);
                 var response = await client.GetAsync(url);
                 var result = await response.Content.ReadAsStringAsync();
 

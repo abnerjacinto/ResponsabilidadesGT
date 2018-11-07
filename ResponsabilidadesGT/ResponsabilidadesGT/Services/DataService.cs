@@ -62,13 +62,20 @@
             {
                 ID=g.ID,
                 IdGlosario=g.IdGlosario,
-                NombreObligacion=g.NombreObligacion,
+                IdObligacion = g.IdObligacion,
+                NombreObligacion =g.NombreObligacion,
                 Descripcion=g.Descripcion,
                 FechaLimite=g.FechaLimite,
+<<<<<<< HEAD
+                IdPuntodeAtencion = g.IdPuntodeAtencion,
+                NombreInstitucion = g.NombreInstitucion,
+                EstadoObligacion =g.EstadoObligacion,
+=======
+                NombreInstitucion=g.NombreInstitucion,
                 EstadoObligacion=g.EstadoObligacion,
+>>>>>>> 9ef731b6110a1b5190a12cba0138a6171dcb3785
                 Ciclo=g.Ciclo,
-                IdObligacion=g.IdGlosario,
-               
+                               
             }).ToList();
             return list;
         }
@@ -82,10 +89,7 @@
                 IdObligacion=o.IdObligacion,
                 NombreObligacion=o.NombreObligacion,
                 EstadoObligacion=o.EstadoObligacion,
-                UsuarioAdicionoObligacion=o.UsuarioAdicionoObligacion,
-                FechaAdicionoObligacion=o.FechaAdicionoObligacion,
-                UsuarioModificoObligacion=o.UsuarioModificoObligacion,
-                FechaModificoObligacion=o.FechaModificoObligacion,
+                
             }).ToList();
             return list;
         }

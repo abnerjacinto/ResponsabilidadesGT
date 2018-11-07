@@ -7,9 +7,8 @@
     <ContentPage.Content>
         <ScrollView
             BindingContext="{Binding Glosario}">
-            
-        
-        <StackLayout>
+           <StackLayout
+               Margin="5">
                 <Label
                     FontSize="Large"
                     FontAttributes="Bold"
@@ -43,35 +42,51 @@
                                         <StackLayout 
                                             Grid.Column="0"
                                             Grid.Row="0"
-                                            VerticalOptions="Center">
-                                            <Label 
+                                            VerticalOptions="Start">
+                                            <Label
+                                                FontAttributes="Bold"
+                                                FontSize="Medium"
                                                 Text="Descripción:"
+                                                TextColor="Black">
+                                            </Label>
+                                            <Label                                              
+                                                
+                                                Text="{Binding Descripcion}"
                                                 TextColor="Black">
                                             </Label>
                                             <Label
                                                 FontAttributes="Bold"
                                                 FontSize="Medium"
-                                                Text="{Binding Descripcion}"
+                                                Text="Fecha límite de Pago:"
                                                 TextColor="Black">
                                             </Label>
-                                            <Label 
-                                            Text="Fecha límite de Pago:"
-                                            TextColor="Black">
+                                            <Label
+                                                TextColor="Black"
+                                                FontSize="Medium"
+                                                Text="{Binding FechaLimite}"
+                                                >
                                             </Label>
                                             <Label
-                                            FontAttributes="Bold"
-                                            FontSize="Medium"
-                                            Text="{Binding FechaLimite}"
-                                            TextColor="Black">
-                                            </Label>
-                                            <Label 
-                                            Text="Ciclo:"
-                                            TextColor="Black">
+                                                FontAttributes="Bold"
+                                                FontSize="Medium"
+                                                Text="Institución:"
+                                                TextColor="Black">
                                             </Label>
                                             <Label
-                                            FontAttributes="Bold"
-                                            FontSize="Medium"
-                                            Text="{Binding Ciclo}">
+                                                TextColor="Black"
+                                                FontSize="Medium"
+                                                Text="{Binding NombreInstitucion}">
+                                            </Label>
+                                            <Label
+                                                FontAttributes="Bold"
+                                                FontSize="Medium"
+                                                Text="Ciclo:"
+                                                TextColor="Black">
+                                            </Label>
+                                            <Label
+                                                TextColor="Black"
+                                                FontSize="Medium"
+                                                Text="{Binding Ciclo}">
                                             </Label>
                                         </StackLayout>
                                         <Image 
@@ -93,7 +108,7 @@
                     Margin="40">
 
                     <Button 
-                        Text="Agregar a mis Responsabilidades"
+                        Text="Agregar Obligación"
                         HeightRequest="46"
                         BackgroundColor="MediumPurple"
                         TextColor="White"

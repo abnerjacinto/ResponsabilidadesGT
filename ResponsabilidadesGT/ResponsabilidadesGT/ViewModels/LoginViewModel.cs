@@ -108,9 +108,8 @@
                     return;
                 }
                 var url = Application.Current.Resources["UrlAPI"].ToString();
-                var fix = Application.Current.Resources["UrlFix"].ToString();
-                var res = Application.Current.Resources["UrlRes"].ToString();
-                var token = await this.apiservice.GetToken($"{url}{fix}{res}/", this.Email, this.Password);
+                
+                var token = await this.apiservice.GetToken($"{url}/", this.Email, this.Password);
 
                 if (token==null)
                 {

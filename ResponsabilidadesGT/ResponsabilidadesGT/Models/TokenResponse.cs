@@ -14,10 +14,11 @@ namespace ResponsabilidadesGT.Models
 
         [JsonProperty(PropertyName = "jwt")]
         public string Token { get; set; }
+        [JsonProperty(PropertyName = "id_user")]
+        public string Iduser { get; set; }
 
-       
 
-        
+
         #endregion
     }
 }

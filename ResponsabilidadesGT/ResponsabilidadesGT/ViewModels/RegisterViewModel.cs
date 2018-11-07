@@ -97,9 +97,8 @@ namespace ResponsabilidadesGT.ViewModels
             }
             
             var url = Application.Current.Resources["UrlAPI"].ToString();
-            var fix = Application.Current.Resources["UrlFix"].ToString();
-            var res = Application.Current.Resources["UrlRes"].ToString();
-            var response = await this.apiservice.createuser($"{url}{fix}{res}/",
+            
+            var response = await this.apiservice.createuser($"{url}/",
             $"name={this.Name}&email={this.Email}&password={this.Password}&confirmarpassword={this.RPassword}&usuarioadiciono={this.Name}&slctipousuario=2");
             if (!response.Success)
             {

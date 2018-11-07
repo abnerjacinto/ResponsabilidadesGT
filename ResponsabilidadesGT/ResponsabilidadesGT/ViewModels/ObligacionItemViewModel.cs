@@ -64,10 +64,7 @@ namespace ResponsabilidadesGT.ViewModels
             obligacion.IdObligacion = this.IdObligacion;
             obligacion.NombreObligacion = this.NombreObligacion;
             obligacion.EstadoObligacion = this.EstadoObligacion;
-            obligacion.UsuarioAdicionoObligacion = this.UsuarioAdicionoObligacion;
-            obligacion.FechaAdicionoObligacion = this.FechaAdicionoObligacion;
-            obligacion.UsuarioModificoObligacion = this.UsuarioModificoObligacion;
-            obligacion.FechaModificoObligacion = this.FechaModificoObligacion;
+            
             var result = await Application.Current.MainPage.DisplayAlert(
                 "Eliminar",
                 "Desea eliminar los datos de su Obligación",

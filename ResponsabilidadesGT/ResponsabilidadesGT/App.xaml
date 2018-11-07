@@ -19,7 +19,11 @@
 
             <!-- Parametros -->
             <infra:InstanceLocator x:Key="Locator"/>
-            <x:String x:Key="UrlAPI">http://192.168.100.10</x:String>
+<<<<<<< HEAD
+            <x:String x:Key="UrlAPI">https://responsabilidadesgt.com</x:String>
+=======
+            <x:String x:Key="UrlAPI">http://192.168.0.102</x:String>
+>>>>>>> 9ef731b6110a1b5190a12cba0138a6171dcb3785
             <x:String x:Key="UrlFix">/Responsabilidades_GT</x:String>
             <x:String x:Key="UrlRes">/public</x:String>
             <!-- Facebook -->
