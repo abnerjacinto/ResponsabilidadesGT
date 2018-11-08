@@ -58,12 +58,10 @@ namespace ResponsabilidadesGT.Droid.Implementations
             var apiService = new ApiService();
             var responseInstagram = await apiService.GetInstagram(requestUrl);
             var url = Xamarin.Forms.Application.Current.Resources["UrlAPI"].ToString();
-            var prefix = Xamarin.Forms.Application.Current.Resources["UrlPrefix"].ToString();
-            var controller = Xamarin.Forms.Application.Current.Resources["UrlUsersController"].ToString();
+            
             var token = await apiService.LoginInstagram(
                 url,
-                prefix,
-                $"{controller}/LoginInstagram",
+                "/LoginInstagram",
                 responseInstagram);
             return token;
         }

@@ -60,14 +60,12 @@ namespace ResponsabilidadesGT.iOS.Implementations
         private async Task<TokenResponse> GetFacebookProfileAsync(string accessToken)
         {
             var url = Xamarin.Forms.Application.Current.Resources["UrlAPI"].ToString();
-            var prefix = Xamarin.Forms.Application.Current.Resources["UrlPrefix"].ToString();
-            var controller = Xamarin.Forms.Application.Current.Resources["UrlUsersController"].ToString();
+            
             var apiService = new ApiService();
             var facebookResponse = await apiService.GetFacebook(accessToken);
             var token = await apiService.LoginFacebook(
                 url,
-                prefix,
-                $"{controller}/LoginFacebook",
+                "/LoginFacebook",
                 facebookResponse);
             return token;
         }

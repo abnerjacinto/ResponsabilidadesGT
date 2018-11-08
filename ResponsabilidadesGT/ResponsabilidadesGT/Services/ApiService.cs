@@ -512,7 +512,7 @@ namespace ResponsabilidadesGT.Services
             }
         }
 
-        public async Task<TokenResponse> LoginInstagram(string urlBase, string servicePrefix, string controller, InstagramResponse profile)
+        public async Task<TokenResponse> LoginInstagram(string urlBase, string controller, InstagramResponse profile)
         {
             try
             {
@@ -523,7 +523,7 @@ namespace ResponsabilidadesGT.Services
                     "application/json");
                 var client = new HttpClient();
                 client.BaseAddress = new Uri(urlBase);
-                var url = $"{servicePrefix}{controller}";
+                var url = $"{controller}";
                 var response = await client.PostAsync(url, content);
 
                 if (!response.IsSuccessStatusCode)
@@ -543,7 +543,7 @@ namespace ResponsabilidadesGT.Services
             }
         }
 
-        public async Task<TokenResponse> LoginFacebook(string urlBase, FacebookResponse profile)
+        public async Task<TokenResponse> LoginFacebook(string urlBase, string controller, FacebookResponse profile)
         {
             try
             {
@@ -554,7 +554,7 @@ namespace ResponsabilidadesGT.Services
                     "application/json");
                 var client = new HttpClient();
                 client.BaseAddress = new Uri(urlBase);
-                var url = $"{servicePrefix}{controller}";
+                var url = $"{controller}";
                 var response = await client.PostAsync(url, content);
 
                 if (!response.IsSuccessStatusCode)
