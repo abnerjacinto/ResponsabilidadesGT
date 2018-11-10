@@ -102,6 +102,7 @@ namespace ResponsabilidadesGT.Droid.Implementations
             var alarmManager = GetAlarmManager();
 
             alarmManager.Set(AlarmType.RtcWakeup, triggerTime, pendingIntent);
+            alarmManager.SetRepeating(AlarmType.RtcWakeup, triggerTime,60000, pendingIntent);
         }
 
         /// <summary>

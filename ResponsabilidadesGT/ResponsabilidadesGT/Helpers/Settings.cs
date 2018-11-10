@@ -19,6 +19,7 @@ namespace ResponsabilidadesGT.Helpers
         private const string token = "Token";
         private const string userASP = "UserASP";
         private const string isRemembered = "IsRemembered";
+        private const string idUser = "IdUser";
         private static readonly string stringDefault = string.Empty;
         private static readonly bool booleanDefault = false;
         #endregion
@@ -68,6 +69,17 @@ namespace ResponsabilidadesGT.Helpers
             set
             {
                 AppSettings.AddOrUpdateValue(isRemembered, value);
+            }
+        }
+        public static string IdUser
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault(idUser, stringDefault);
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue(idUser, value);
             }
         }
     }

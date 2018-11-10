@@ -31,7 +31,7 @@ namespace ResponsabilidadesGT.Droid.Implementations
                 .SetContentTitle(notification.Title)
                 .SetContentText(notification.Body)
                 .SetSmallIcon(notification.IconId)
-                .SetAutoCancel(true);
+                .SetAutoCancel(true);//true por defecto
 
             if (notification.HasSound)
                 builder.SetDefaults((int)NotificationDefaults.Sound);

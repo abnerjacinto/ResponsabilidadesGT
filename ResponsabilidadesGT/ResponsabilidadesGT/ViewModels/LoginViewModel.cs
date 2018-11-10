@@ -141,7 +141,7 @@
                     Settings.Token = token.Token;
                     
                 }
-
+                Settings.IdUser = token.Iduser;
                 //mainViewModel.Responsabilidades = new ResponsabilidadesViewModel();
                 MainViewModel.GetInstance().Principal = new PrincipalViewModel();
                 Application.Current.MainPage=new MasterPage();

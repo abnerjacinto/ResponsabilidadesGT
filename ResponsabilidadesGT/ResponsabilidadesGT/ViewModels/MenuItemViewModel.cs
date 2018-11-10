@@ -49,6 +49,15 @@ namespace ResponsabilidadesGT.ViewModels
                 //MainViewModel.GetInstance().MyProfile = new MyProfileViewModel();
                 //App.Navigator.PushAsync(new MyProfilePage());
             }
+            else if (this.PageName == "PerfilPage")
+            {
+                //var mainViewModel = MainViewModel.GetInstance();
+                //mainViewModel.Responsabilidades = new ResponsabilidadesViewModel();
+                //App.Navigator.PushAsync(new ResponsabilidadesPage());
+
+                MainViewModel.GetInstance().MyProfile = new MyProfileViewModel();
+                App.Navigator.PushAsync(new MyProfilePage());
+            }
         }
         #endregion
     }

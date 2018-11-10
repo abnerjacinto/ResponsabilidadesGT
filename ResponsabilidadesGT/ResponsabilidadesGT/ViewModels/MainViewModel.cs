@@ -51,7 +51,7 @@ namespace ResponsabilidadesGT.ViewModels
         public PrincipalViewModel Principal { get; set; }
         public PreferenciaViewModel Preferencia { get; set; }
         public AddObligacionViewModel AddObligacion { get; set; }
-
+        public MyProfileViewModel MyProfile { get; set; }
         #endregion
         #region Constructor
         public MainViewModel()
@@ -89,13 +89,13 @@ namespace ResponsabilidadesGT.ViewModels
                 PageName = "ResponsabilidadesPage",
             });
 
-            //this.Menus.Add(new MenuItemViewModel
-            //{
-            //    Icon = "ic_settings",
-            //    Title = "Mi Perfil",
-            //    PageName = "PerfilPage",
-            //});         
-          
+            this.Menus.Add(new MenuItemViewModel
+            {
+                Icon = "ic_settings",
+                Title = "Mi Perfil",
+                PageName = "PerfilPage",
+            });
+
             this.Menus.Add(new MenuItemViewModel
             {
                 Icon = "ic_exit_to_app",
