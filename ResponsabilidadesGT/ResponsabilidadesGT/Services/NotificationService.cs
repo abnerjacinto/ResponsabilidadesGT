@@ -12,5 +12,9 @@ namespace ResponsabilidadesGT.Services
         {
             DependencyService.Get<ILocalNotifications>().Show(title,body,id,notifyTime,hasSound,hasVibration);
         }
+        public void Cancel(int id)
+        {
+            DependencyService.Get<ILocalNotifications>().Cancel(id);
+        }
     }
 }

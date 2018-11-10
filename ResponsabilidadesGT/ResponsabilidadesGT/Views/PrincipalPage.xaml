@@ -90,6 +90,18 @@
                                         <Label 
                                             Grid.Column="3"
                                             Grid.Row="1"
+                                            Text="Cancelar Alarma"
+                                            FontSize="Micro"
+                                            TextColor="Black"
+                                            HorizontalOptions="Start"
+                                            VerticalOptions="Center">
+                                            <Label.GestureRecognizers>
+                                                <TapGestureRecognizer Command="CancelAlarmCommand"></TapGestureRecognizer>
+                                            </Label.GestureRecognizers>
+                                        </Label>
+                                        <Label 
+                                            Grid.Column="4"
+                                            Grid.Row="1"
                                             Text="Eliminar"
                                             FontSize="Micro"
                                             TextColor="Black"

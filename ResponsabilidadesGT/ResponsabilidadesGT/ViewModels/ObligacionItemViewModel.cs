@@ -37,8 +37,15 @@ namespace ResponsabilidadesGT.ViewModels
                 return new RelayCommand(DeleteObligacion);
             }
         }
+        public ICommand CancelAlarmCommand
+        {
+            get
+            {
+                return new RelayCommand(CancelAlarm);
+            }
+        }
 
-       
+
 
         #endregion
         #region Methods
@@ -48,14 +55,20 @@ namespace ResponsabilidadesGT.ViewModels
             await App.Navigator.PushAsync(new GlosarioPage());
         }
 
-        
-
         private async void LoadPreferences()
         {
             MainViewModel.GetInstance().Preferencia = new PreferenciaViewModel(this);
-            await App.Navigator.PushAsync(new PreferenciaPage(),true);
+            await App.Navigator.PushAsync(new PreferenciaPage(), true);
 
-           
+
+        }
+
+        private async void CancelAlarm()
+        {
+            NotificationService Noty = new NotificationService();
+            Noty.Cancel(this.ID);
+
+
         }
         private async void DeleteObligacion()
         {

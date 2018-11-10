@@ -78,8 +78,6 @@
                 IdPuntodeAtencion = p.IdPuntodeAtencion,
                 IdGlosario=p.IdGlosario,
                 NombreInstitucion = p.NombreInstitucion,
-                Direccion = p.Direccion,
-                Telefono = p.Telefono,
                 Link=p.Link,
                 
             });
