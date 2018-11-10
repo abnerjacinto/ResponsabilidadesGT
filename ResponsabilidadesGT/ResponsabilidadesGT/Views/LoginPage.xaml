@@ -94,6 +94,9 @@
                     Text="¿Has olvidado tu contraseña?"
                     TextColor="SkyBlue"
                     HorizontalOptions="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ForgotPassCommand}"/>
+                    </Label.GestureRecognizers>
 
                 </Label>
                 <StackLayout
@@ -106,13 +109,13 @@
                             <TapGestureRecognizer Command="{Binding LoginFacebookCommand}"/>
                         </Image.GestureRecognizers>
                     </Image>
-                    <Image 
+                    <!--<Image 
                         HeightRequest="60"
                         Source="iconTwitter">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding LoginTwitterCommand}"/>
                     </Image.GestureRecognizers>
-                    </Image>
+                    </Image>-->
                     <Image 
                         HeightRequest="60"
                         Source="iconInstagram">

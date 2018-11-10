@@ -37,7 +37,7 @@ namespace ResponsabilidadesGT.Droid.Implementations
                 builder.SetDefaults((int)NotificationDefaults.Sound);
 
             if (notification.HasVibration)
-                builder.SetVibrate(new long[] { 0, 1500 });
+                builder.SetVibrate(new long[] { 0, 1500,200,1500 });
 
             var resultIntent = LocalNotificationsImplementation.GetLauncherActivity();
             resultIntent.SetFlags(ActivityFlags.NewTask | ActivityFlags.ClearTask);

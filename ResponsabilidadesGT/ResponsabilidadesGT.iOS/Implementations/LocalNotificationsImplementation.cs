@@ -47,7 +47,7 @@ using MonoTouch.UIKit;
         /// <param name="body">Body or description of the notification</param>
         /// <param name="id">Id of the notification</param>
         /// <param name="notifyTime">The time you would like to schedule the notification for</param>
-        public void Show(string title, string body, int id, DateTime notifyTime, bool hasSound, bool hasVibration)
+        public void Show(string title, string body, int id, int dias, DateTime notifyTime, bool hasSound, bool hasVibration)
         {
             var notification = new UILocalNotification
             {
@@ -56,6 +56,7 @@ using MonoTouch.UIKit;
                 AlertBody = body,
                 UserInfo = NSDictionary.FromObjectAndKey(NSObject.FromObject(id), NSObject.FromObject(NotificationKey)),
                 SoundName = hasSound ? UILocalNotification.DefaultSoundName : null,
+                
             };
 
             UIApplication.SharedApplication.ScheduleLocalNotification(notification);

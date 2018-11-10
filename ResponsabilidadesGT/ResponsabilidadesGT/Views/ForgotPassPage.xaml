@@ -1,56 +1,58 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-            x:Class="ResponsabilidadesGT.Views.AddObligacionPage"
-              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             Title="Agregar Obligación">
+             x:Class="ResponsabilidadesGT.Views.ForgotPassPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="Recuperar contraseña">
     <ContentPage.Content>
         <ScrollView
-            BindingContext="{Binding AddObligacion}">
+            BindingContext="{Binding Register}">
             <StackLayout Padding="5">
                 <Image 
                     Aspect="AspectFit"
                     Source="logo"
                     WidthRequest="150"/>
-                <Grid Margin="5,0">
+                <Grid Margin="5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
-                       
+                        <ColumnDefinition Width="4*"/>
                     </Grid.ColumnDefinitions>
-                    <StackLayout 
-                                Grid.Column="0"
-                                Grid.Row="0"
-                                VerticalOptions="Center">
-                    <Label 
+                    
+                    <Image 
                         Grid.Row="0"
-                        Text="Nombre Obligación:" 
+                        Grid.Column="0"
+                        Source="iconEmail"
+                        HeightRequest="30" 
                         VerticalOptions="Center"
                     />
                     <Entry
-                        Grid.Row="1"
-                        Keyboard="Text"
-                        Placeholder="Ingrese nombre Obligación."
-                        Text="{Binding NombreObligacion,Mode=TwoWay}">
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Keyboard="Email"
+                        Placeholder="Ingrese correo."
+                        Text="{Binding Email,Mode=TwoWay}">
                     </Entry>
-                    </StackLayout>
+
+                    
                 </Grid>
+                <ActivityIndicator
+                    IsRunning="{Binding IsRunning,Mode=TwoWay}">
+                </ActivityIndicator>
 
                 <StackLayout
-                    Margin="10,0"
+                    Margin="20,0"
                     Orientation="Horizontal">
                     <Button 
-                        Text="Guardar"
-                        BackgroundColor="Purple"
+                        Text="Recuperar"
+                        BackgroundColor="{StaticResource PrimaryDark}"
                         HeightRequest="46"    
                         TextColor="White"
                         BorderRadius="23"
                         HorizontalOptions="CenterAndExpand"
-                        Command="{Binding AddObligacionCommand}"
+                        Command="{Binding RequestPassCommand}"
                         IsEnabled="{Binding IsEnabled,Mode=TwoWay}">
                     </Button>
-                    <ActivityIndicator
-                    IsRunning="{Binding IsRunning,Mode=TwoWay}">
-                    </ActivityIndicator>
+
                 </StackLayout>
             </StackLayout>
         </ScrollView>

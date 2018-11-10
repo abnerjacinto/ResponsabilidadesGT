@@ -26,7 +26,7 @@ namespace ResponsabilidadesGT.Interfaces
         /// <param name="notifyTime">Time to show notification</param>
         /// <param name="hasSound">Bool to check notification sound</param>
         /// <param name="hasVibration">Bool to check notification vibration</param>
-        void Show(string title, string body, int id, DateTime notifyTime, bool hasSound = false, bool hasVibration = false);
+        void Show(string title, string body, int id, int dias, DateTime notifyTime, bool hasSound = false, bool hasVibration = false);
 
         /// <summary>
         /// Cancel a local notification

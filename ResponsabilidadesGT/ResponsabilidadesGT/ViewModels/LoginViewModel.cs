@@ -7,6 +7,7 @@
     using ResponsabilidadesGT.Views;
     using System.Text.RegularExpressions;
     using ResponsabilidadesGT.Helpers;
+    using System;
 
     public class LoginViewModel:BaseViewModel
     {
@@ -225,6 +226,18 @@
             {
                 return new RelayCommand(LoginTwitter);
             }
+        }
+        public ICommand ForgotPassCommand
+        {
+            get
+            {
+                return new RelayCommand(ForgotPass);
+            }
+        }
+
+        private async void ForgotPass()
+        {
+            await Application.Current.MainPage.Navigation.PushAsync(new RegisterPage());
         }
 
         private async void LoginTwitter()

@@ -73,7 +73,7 @@ namespace ResponsabilidadesGT.Droid.Implementations
         /// <param name="body">Body or description of the notification</param>
         /// <param name="id">Id of the notification</param>
         /// <param name="notifyTime">The time you would like to schedule the notification for</param>
-        public void Show(string title, string body, int id, DateTime notifyTime, bool hasSound, bool hasVibration)
+        public void Show(string title, string body, int id, int dias, DateTime notifyTime, bool hasSound, bool hasVibration)
         {
             var intent = CreateIntent(id);
 
@@ -102,7 +102,7 @@ namespace ResponsabilidadesGT.Droid.Implementations
             var alarmManager = GetAlarmManager();
 
             alarmManager.Set(AlarmType.RtcWakeup, triggerTime, pendingIntent);
-            alarmManager.SetRepeating(AlarmType.RtcWakeup, triggerTime,60000, pendingIntent);
+            alarmManager.SetRepeating(AlarmType.RtcWakeup, triggerTime,10000*60*60*24*dias, pendingIntent);
         }
 
         /// <summary>

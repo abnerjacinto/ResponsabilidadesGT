@@ -110,7 +110,9 @@ namespace ResponsabilidadesGT.ViewModels
             //Metodo de mostrar notificacion, de la instancia de notificacion, parametros, Titulo,Mensaje,ID,Fecha,Sonido,Vibracion
             Noty.Show(obli.NombreObligacion,
                                              $"Se le recuerda la obligacion {obli.NombreObligacion} que esta proximo a vencer",
-                                             obli.ID, fechaRecordatorio,
+                                             obli.ID,
+                                             Convert.ToInt32(this.Prorroga),
+                                             fechaRecordatorio,
                                              true,
                                              true);
             this.IsEnabled = true;

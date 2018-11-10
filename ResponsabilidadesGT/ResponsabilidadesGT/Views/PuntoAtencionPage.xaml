@@ -46,26 +46,8 @@
                                                 Text="{Binding NombreInstitucion}"
                                                 TextColor="Black">
                                             </Label>
-                                            <Label 
-                                                Text="Dirección:"
-                                                TextColor="Black">
-                                            </Label>
-                                            <Label
-                                                FontAttributes="Bold"
-                                                FontSize="Medium"
-                                                Text="{Binding Direccion}"
-                                                TextColor="Black">
-                                            </Label>
-                                            <Label 
-                                                Text="Teléfono:"
-                                                TextColor="Black">
-                                            </Label>
-                                            <Label
-                                            FontAttributes="Bold"
-                                            FontSize="Medium"
-                                            Text="{Binding Telefono}"
-                                            TextColor="Black">
-                                            </Label>
+                                            
+                                           
                                             <Label 
                                                 Text="Más Información:"
                                                 TextColor="Black">
